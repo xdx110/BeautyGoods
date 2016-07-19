@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
+    android:background="#000000"
     android:layout_height="wrap_content">
 
     <ImageView
@@ -11,14 +12,16 @@
 
     <ImageView
         android:id="@+id/stylist_author_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_below="@id/stylist_head_back_ground_image"
         android:layout_centerInParent="true"
-        android:layout_marginTop="-50dp"
-        android:src="@mipmap/ic_launcher" />
+        android:layout_marginTop="-25dp"
+
+         />
 
     <TextView
+        android:textColor="#ffffff"
         android:id="@+id/stylist_author_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,6 +30,7 @@
         android:text="Michael Saiger" />
 
     <TextView
+        android:textColor="#EBEBEB"
         android:id="@+id/stylist_founder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,6 +39,7 @@
         android:text="Miansai 创始人" />
 
     <CheckBox
+        android:button="@null"
         android:id="@+id/stylist_attention"
         android:layout_width="10dp"
         android:layout_height="10dp"

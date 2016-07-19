@@ -1,6 +1,7 @@
 package com.xdx.dllo.beautygoodsdemo.stylist;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -12,6 +13,7 @@ import com.xdx.dllo.beautygoodsdemo.R;
 import com.xdx.dllo.beautygoodsdemo.base.BaseFragment;
 import com.xdx.dllo.beautygoodsdemo.base.CommonAdapter;
 import com.xdx.dllo.beautygoodsdemo.base.ViewHolder;
+import com.xdx.dllo.beautygoodsdemo.tools.UrlValues;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,19 +34,24 @@ public class StylistFragment extends BaseFragment implements StylistContract.Vie
 
     @Override
     public void initView(View view) {
-        stylistListView = (ListView) view.findViewById(R.id.stylist_list_view);
         adapter = new StylistAdapter(context);
+        stylistListView = (ListView) view.findViewById(R.id.stylist_list_view);
+        presenter.getUrl(UrlValues.STYLIST_URL);
+        presenter.start();
     }
 
     @Override
     public void initDate() {
 
+
     }
 
 
     @Override
-    public void getdata(StylistBean data) {
+    public void getData(StylistBean data) {
+        Log.d("StylistFragment", "data.getData().getDesigners().size():" + data.getData().getDesigners().size());
         adapter.setStylistBean(data);
+        Log.d("StylistFragment", Thread.currentThread().getName());
         stylistListView.setAdapter(adapter);
 
     }

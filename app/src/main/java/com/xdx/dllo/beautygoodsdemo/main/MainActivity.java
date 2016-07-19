@@ -8,7 +8,11 @@ import com.xdx.dllo.beautygoodsdemo.R;
 import com.xdx.dllo.beautygoodsdemo.base.BaseActivity;
 import com.xdx.dllo.beautygoodsdemo.goods.GoodsFragment;
 import com.xdx.dllo.beautygoodsdemo.pictorial.PictorialFragemnt;
+import com.xdx.dllo.beautygoodsdemo.stylist.StylistBean;
+import com.xdx.dllo.beautygoodsdemo.stylist.StylistContract;
 import com.xdx.dllo.beautygoodsdemo.stylist.StylistFragment;
+import com.xdx.dllo.beautygoodsdemo.stylist.StylistModel;
+import com.xdx.dllo.beautygoodsdemo.stylist.StylistPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,10 +46,14 @@ public class MainActivity extends BaseActivity {
     }
 
     private List initFragment() {
+        StylistFragment stylistFragment = new StylistFragment();
+        StylistContract.Model model = new StylistModel();
+        StylistContract.Presenter presenter = new StylistPresenter(model, stylistFragment);
+        stylistFragment.setPresenter(presenter);
         datas = new ArrayList<>();
         datas.add(new PictorialFragemnt());
         datas.add(new GoodsFragment());
-        datas.add(new StylistFragment());
+        datas.add(stylistFragment);
         return datas;
     }
 

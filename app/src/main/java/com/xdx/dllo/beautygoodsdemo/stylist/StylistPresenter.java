@@ -19,7 +19,7 @@ public class StylistPresenter implements StylistContract.Presenter {
 
     @Override
     public void urlSuccess(Object data) {
-        view.getdata(data);
+        view.getData(data);
     }
 
 

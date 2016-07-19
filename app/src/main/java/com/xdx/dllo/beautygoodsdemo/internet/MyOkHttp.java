@@ -1,5 +1,10 @@
 package com.xdx.dllo.beautygoodsdemo.internet;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Log;
+
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -17,6 +22,9 @@ public class MyOkHttp {
     private static MyOkHttp myOkHttp;
     public OkHttpClient client;
     private Gson gson;
+
+    private final int SUCCESS = 1;
+    private final int ERROR = -1;
 
 
     private MyOkHttp() {
@@ -45,6 +53,21 @@ public class MyOkHttp {
         final Request request = new Request.Builder()
                 .url(url)
                 .build();
+        Log.d("MyOkHttp", Thread.currentThread().getName());
+        final Handler handler = new Handler(Looper.getMainLooper()) {
+            @Override
+            public void handleMessage(Message msg) {
+                switch (msg.what) {
+                    case SUCCESS:
+                        onTrue.hasData((T) msg.obj);
+                        break;
+                    case ERROR:
+                        onError.noHasData();
+
+                        break;
+                }
+            }
+        };
 
         client.newCall(request).enqueue(new Callback() {
             @Override
@@ -59,11 +82,17 @@ public class MyOkHttp {
                 try {
                     result = response.body().string();
                     t = gson.fromJson(result, clazz);
-                    onTrue.hasData(t);
+                    Log.d("MyOkHttp", Thread.currentThread().getName());
+                    // onTrue.hasData(t);
+                    Message message = handler.obtainMessage();
+                    message.what = SUCCESS;
+                    message.obj = t;
+                    handler.sendMessage(message);
 
                 } catch (IOException e) {
                     e.printStackTrace();
-                    onError.noHasData();
+//                    onError.noHasData();
+                    handler.sendEmptyMessage(ERROR);
                 }
 
             }
