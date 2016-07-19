@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <ListView
+        android:divider="#ffffff"
         android:id="@+id/goods_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
