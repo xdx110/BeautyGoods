@@ -26,6 +26,5 @@ public interface StylistContract {
     interface View<T> extends BaseView<Presenter> {
         void getdata(T data);
 
-        void urlError(String errorMessage);
     }
 }
