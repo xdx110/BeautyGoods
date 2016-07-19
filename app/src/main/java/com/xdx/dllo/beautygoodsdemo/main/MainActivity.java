@@ -7,7 +7,9 @@ import android.support.v4.view.ViewPager;
 import com.xdx.dllo.beautygoodsdemo.R;
 import com.xdx.dllo.beautygoodsdemo.base.BaseActivity;
 import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
+import com.xdx.dllo.beautygoodsdemo.goods.GoodModel;
 import com.xdx.dllo.beautygoodsdemo.goods.GoodsFragment;
+import com.xdx.dllo.beautygoodsdemo.goods.GoodsPresenter;
 import com.xdx.dllo.beautygoodsdemo.pictorial.PictorialFragemnt;
 import com.xdx.dllo.beautygoodsdemo.stylist.StylistFragment;
 import com.xdx.dllo.beautygoodsdemo.stylist.StylistModel;
@@ -45,13 +47,20 @@ public class MainActivity extends BaseActivity {
     }
 
     private List initFragment() {
+        //
         StylistFragment stylistFragment = new StylistFragment();
         BaseContract.Model model = new StylistModel();
         BaseContract.Presenter presenter = new StylistPresenter(model, stylistFragment);
         stylistFragment.setPresenter(presenter);
+        //
+        GoodsFragment goodsFragment=new GoodsFragment();
+        BaseContract.Model goodsModel=new GoodModel();
+        BaseContract.Presenter goodsPresenter=new GoodsPresenter(goodsModel,goodsFragment);
+        goodsFragment.setPresenter(goodsPresenter);
+
         datas = new ArrayList<>();
         datas.add(new PictorialFragemnt());
-        datas.add(new GoodsFragment());
+        datas.add(goodsFragment);
         datas.add(stylistFragment);
         return datas;
     }

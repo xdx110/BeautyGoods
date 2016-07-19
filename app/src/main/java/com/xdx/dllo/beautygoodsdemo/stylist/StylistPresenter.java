@@ -1,11 +1,12 @@
 package com.xdx.dllo.beautygoodsdemo.stylist;
 
 import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
+import com.xdx.dllo.beautygoodsdemo.goods.GoodsBean;
 
 /**
  * Created by dllo on 16/7/19.
  */
-public class StylistPresenter implements BaseContract.Presenter {
+public class StylistPresenter implements BaseContract.Presenter<StylistBean> {
     private BaseContract.Model model;
     private BaseContract.View view;
 
@@ -20,7 +21,7 @@ public class StylistPresenter implements BaseContract.Presenter {
     }
 
     @Override
-    public void urlSuccess(Object data) {
+    public void urlSuccess(StylistBean data) {
         view.getData(data);
     }
 

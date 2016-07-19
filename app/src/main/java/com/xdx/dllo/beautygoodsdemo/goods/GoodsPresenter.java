@@ -1,11 +1,13 @@
 package com.xdx.dllo.beautygoodsdemo.goods;
 
+import android.util.Log;
+
 import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
 
 /**
  * Created by dllo on 16/7/19.
  */
-public class GoodsPresenter implements BaseContract.Presenter {
+public class GoodsPresenter implements BaseContract.Presenter <GoodsBean>{
     private BaseContract.Model model;
     private BaseContract.View view;
 
@@ -20,7 +22,8 @@ public class GoodsPresenter implements BaseContract.Presenter {
     }
 
     @Override
-    public void urlSuccess(Object data) {
+    public void urlSuccess(GoodsBean data) {
+        Log.d("GoodsPresenter", "data:" + data);
         view.getData(data);
     }
 

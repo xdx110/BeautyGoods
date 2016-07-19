@@ -1,5 +1,7 @@
 package com.xdx.dllo.beautygoodsdemo.goods;
 
+import android.util.Log;
+
 import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
 import com.xdx.dllo.beautygoodsdemo.internet.MyOkHttp;
 
@@ -14,6 +16,7 @@ public class GoodModel implements BaseContract.Model {
         MyOkHttp.getInstance().getRequestAsync(url, GoodsBean.class, new MyOkHttp.OnTrue<GoodsBean>() {
             @Override
             public void hasData(GoodsBean data) {
+                Log.d("GoodModel", "data:" + data);
                 presenter.urlSuccess(data);
 
             }

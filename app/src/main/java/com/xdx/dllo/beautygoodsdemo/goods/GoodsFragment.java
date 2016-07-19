@@ -1,5 +1,6 @@
 package com.xdx.dllo.beautygoodsdemo.goods;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ public class GoodsFragment extends BaseFragment implements BaseContract.View<Goo
         goodListView = (ListView) view.findViewById(R.id.goods_list_view);
         adapter = new GoodsAdapter(context);
         presenter.getUrl(UrlValues.GOODS_URL);
+        presenter.start();
     }
 
     @Override
@@ -37,8 +39,10 @@ public class GoodsFragment extends BaseFragment implements BaseContract.View<Goo
 
     @Override
     public void getData(GoodsBean data) {
+        Log.d("GoodsFragment", "data:" + data);
         adapter.setGoodsBean(data);
         goodListView.setAdapter(adapter);
+
     }
 
     @Override
