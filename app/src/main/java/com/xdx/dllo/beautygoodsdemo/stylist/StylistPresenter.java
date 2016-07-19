@@ -1,13 +1,15 @@
 package com.xdx.dllo.beautygoodsdemo.stylist;
 
+import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
+
 /**
  * Created by dllo on 16/7/19.
  */
-public class StylistPresenter implements StylistContract.Presenter {
-    private StylistContract.Model model;
-    private StylistContract.View view;
+public class StylistPresenter implements BaseContract.Presenter {
+    private BaseContract.Model model;
+    private BaseContract.View view;
 
-    public StylistPresenter(StylistContract.Model model, StylistContract.View view) {
+    public StylistPresenter(BaseContract.Model model, BaseContract.View view) {
         this.model = model;
         this.view = view;
     }

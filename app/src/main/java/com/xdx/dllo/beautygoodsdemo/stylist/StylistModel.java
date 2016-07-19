@@ -2,6 +2,7 @@ package com.xdx.dllo.beautygoodsdemo.stylist;
 
 import android.util.Log;
 
+import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
 import com.xdx.dllo.beautygoodsdemo.internet.MyOkHttp;
 import com.xdx.dllo.beautygoodsdemo.tools.UrlValues;
 
@@ -9,8 +10,8 @@ import com.xdx.dllo.beautygoodsdemo.tools.UrlValues;
  * Model层数据处理 进行解析
  * Created by dllo on 16/7/19.
  */
-public class StylistModel implements StylistContract.Model {
-    private StylistContract.Presenter presenter;
+public class StylistModel implements BaseContract.Model {
+    private BaseContract.Presenter presenter;
 
 
     @Override
@@ -31,8 +32,9 @@ public class StylistModel implements StylistContract.Model {
         });
     }
 
+
     @Override
-    public void setPresenter(StylistContract.Presenter presenter) {
+    public void setPresenter(BaseContract.Presenter presenter) {
         this.presenter = presenter;
     }
 }

@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.bumptech.glide.DrawableTypeRequest;
 import com.bumptech.glide.Glide;
 import com.xdx.dllo.beautygoodsdemo.R;
+import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
 import com.xdx.dllo.beautygoodsdemo.base.BaseFragment;
 import com.xdx.dllo.beautygoodsdemo.base.CommonAdapter;
 import com.xdx.dllo.beautygoodsdemo.base.ViewHolder;
@@ -21,8 +22,8 @@ import java.util.List;
 /**
  * Created by dllo on 16/7/19.
  */
-public class StylistFragment extends BaseFragment implements StylistContract.View<StylistBean> {
-    private StylistContract.Presenter<StylistBean> presenter;
+public class StylistFragment extends BaseFragment implements BaseContract.View<StylistBean> {
+    private BaseContract.Presenter<StylistBean> presenter;
     private ListView stylistListView;
     private StylistAdapter adapter;
 
@@ -61,8 +62,10 @@ public class StylistFragment extends BaseFragment implements StylistContract.Vie
         Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
     }
 
+
+
     @Override
-    public void setPresenter(StylistContract.Presenter presenter) {
-        this.presenter = presenter;
+    public void setPresenter(BaseContract.Presenter presenter) {
+      this.presenter=presenter;
     }
 }
