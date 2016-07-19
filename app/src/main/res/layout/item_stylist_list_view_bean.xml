@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/stylist_head_back_ground_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/aa" />
+
+    <ImageView
+        android:id="@+id/stylist_author_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stylist_head_back_ground_image"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="-50dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/stylist_author_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stylist_author_image"
+        android:layout_centerInParent="true"
+        android:text="Michael Saiger" />
+
+    <TextView
+        android:id="@+id/stylist_founder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stylist_author_name"
+        android:layout_centerInParent="true"
+        android:text="Miansai 创始人" />
+
+    <CheckBox
+        android:id="@+id/stylist_attention"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_below="@id/stylist_founder"
+        android:layout_centerInParent="true"
+        android:background="@drawable/stylist_check_box" />
+
+</RelativeLayout>
