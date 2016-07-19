@@ -13,7 +13,7 @@ public interface StylistContract {
         void getUrl(String url);
 
         //从model得到集合
-        void urlSuccess(Class<T> data);
+        void urlSuccess(T data);
 
         void urlError();
     }
