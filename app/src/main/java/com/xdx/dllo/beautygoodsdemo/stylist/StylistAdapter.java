@@ -3,6 +3,7 @@ package com.xdx.dllo.beautygoodsdemo.stylist;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ import com.xdx.dllo.beautygoodsdemo.tools.RoundDrawable;
 public class StylistAdapter extends BaseAdapter {
     private Context context;
     private StylistBean stylistBean;
- private ViewHolder holder = null;
+    private ViewHolder holder = null;
 
     public StylistAdapter(Context context) {
         this.context = context;
@@ -50,7 +51,7 @@ public class StylistAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup viewGroup) {
+    public View getView(final int position, View convertView, ViewGroup viewGroup) {
 
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_stylist_list_view_bean, viewGroup, false);
@@ -59,18 +60,27 @@ public class StylistAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        Glide.with(context).load(stylistBean.getData().getDesigners().get(position).getRecommend_images().get(0)).into(holder.headImage);
+        Glide.with(context).load(stylistBean.getData().getDesigners().get(position).getRecommend_images().get(0)).error(R.mipmap.icon_splash).into(holder.headImage);
         Glide.with(context).load(stylistBean.getData().getDesigners().get(position).getAvatar_url()).asBitmap().into(new SimpleTarget<Bitmap>() {
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                if (resource==null){
-                    holder.authorImage.setImageDrawable(new RoundDrawable(BitmapFactory.decodeResource(context.getResources(),R.mipmap.aa)));
+                if (resource == null) {
+                    holder.authorImage.setImageDrawable(new RoundDrawable(BitmapFactory.decodeResource(context.getResources(), R.mipmap.icon_splash)));
                 }
                 holder.authorImage.setImageDrawable(new RoundDrawable(resource));
             }
         });
         holder.authorName.setText(stylistBean.getData().getDesigners().get(position).getName());
         holder.founder.setText(stylistBean.getData().getDesigners().get(position).getLabel());
+        holder.attention.setChecked(stylistBean.getData().getDesigners().get(position).isChecked());
+        holder.attention.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CheckBox checkBox = (CheckBox) view;
+                //把改变之后的状态加载都数据中
+                stylistBean.getData().getDesigners().get(position).setChecked(checkBox.isChecked());
+            }
+        });
         return convertView;
     }
 

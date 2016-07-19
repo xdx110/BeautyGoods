@@ -66,12 +66,21 @@ public class StylistBean {
         }
 
         public static class DesignersBean {
+            private boolean isChecked=false;
             private String concept;
             private String name;
             private String label;
             private String avatar_url;
             private int id;
             private List<String> recommend_images;
+
+            public boolean isChecked() {
+                return isChecked;
+            }
+
+            public void setChecked(boolean checked) {
+                isChecked = checked;
+            }
 
             public String getConcept() {
                 return concept;

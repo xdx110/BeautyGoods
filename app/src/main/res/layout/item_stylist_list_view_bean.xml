@@ -39,10 +39,11 @@
         android:text="Miansai 创始人" />
 
     <CheckBox
+        android:layout_margin="10dp"
         android:button="@null"
         android:id="@+id/stylist_attention"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="60dp"
+        android:layout_height="28dp"
         android:layout_below="@id/stylist_founder"
         android:layout_centerInParent="true"
         android:background="@drawable/stylist_check_box" />
