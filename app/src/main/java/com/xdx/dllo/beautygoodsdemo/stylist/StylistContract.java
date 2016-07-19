@@ -13,7 +13,7 @@ public interface StylistContract {
         void getUrl(String url);
 
         //从model得到集合
-        void urlSuccess(Class<T> data);
+        void urlSuccess(T data);
 
         void urlError();
     }
@@ -24,6 +24,8 @@ public interface StylistContract {
     }
 
     interface View<T> extends BaseView<Presenter> {
-        void getdata(Class<T> data);
+        void getdata(T data);
+
+        void urlError(String errorMessage);
     }
 }
