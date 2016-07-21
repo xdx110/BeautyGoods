@@ -1,5 +1,7 @@
 package com.xdx.dllo.beautygoodsdemo.stylist.stylistinto;
 
+import android.util.Log;
+
 import com.xdx.dllo.beautygoodsdemo.internet.MyOkHttp;
 
 /**
@@ -14,6 +16,7 @@ public class StyListIntoModel implements StylistIntoContract.Model {
         MyOkHttp.getInstance().getRequestAsync(urlTop, StylistIntoTopBean.class, new MyOkHttp.OnTrue<StylistIntoTopBean>() {
             @Override
             public void hasData(StylistIntoTopBean data) {
+
                 presenter.getDataTop(data);
             }
         }, new MyOkHttp.OnError() {

@@ -1,5 +1,6 @@
 package com.xdx.dllo.beautygoodsdemo.stylist.stylistinto;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -36,7 +37,7 @@ public class StylistIntoBelowBean {
         this.result = result;
     }
 
-    public static class DataBean {
+    public static class DataBean  implements Serializable{
         private int has_next;
         /**
          * images : ["http://dstatic.zuimeia.com/common/image/2016/7/18/77bb0d17-f0a2-4db3-9e92-07781107a886_800x1000.jpeg","http://dstatic.zuimeia.com/common/image/2016/7/18/b3a06be2-8e6d-4b6b-aca9-182ce36f4656_500x625.jpeg","http://dstatic.zuimeia.com/common/image/2016/7/18/ce1a0786-305e-4031-a1a8-984c001097cb_800x1000.jpeg","http://dstatic.zuimeia.com/common/image/2016/7/18/1b4a2eb9-7a4e-4dac-a87c-3a714c822497_480x600.jpeg","http://dstatic.zuimeia.com/common/image/2016/7/18/bba75f29-82a2-4618-9a83-7e084680e7c0_800x1000.jpeg","http://dstatic.zuimeia.com/common/image/2016/7/18/c7321e53-1828-43b5-b744-33cdcc9c2c83_800x1000.jpeg","http://dstatic.zuimeia.com/common/image/2016/7/18/b542a9f5-4575-440e-b2cf-e2e92931f651_800x1000.jpeg","http://dstatic.zuimeia.com/common/image/2016/7/18/5e6fd67a-bb2c-4986-846b-aa99f12e2d52_800x1000.jpeg","http://dstatic.zuimeia.com/common/image/2016/7/18/c0d8004c-e888-4bcd-9752-a1624f45ecaf_800x1000.jpeg","http://dstatic.zuimeia.com/common/image/2016/7/18/7e6ff3a6-276d-4561-9e86-594b2ce7715a_800x1000.jpeg"]
@@ -63,7 +64,7 @@ public class StylistIntoBelowBean {
             this.products = products;
         }
 
-        public static class ProductsBean {
+        public static class ProductsBean   {
             private int mark_user_num;
             private int id;
             private String name;

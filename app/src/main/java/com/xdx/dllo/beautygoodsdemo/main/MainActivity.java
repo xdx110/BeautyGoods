@@ -42,6 +42,8 @@ public class MainActivity extends BaseActivity {
         mainAdapter.setDatas(initFragment());
         viewPager.setAdapter(mainAdapter);
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setSelectedTabIndicatorHeight(0);
+
 
 
     }
@@ -53,9 +55,9 @@ public class MainActivity extends BaseActivity {
         BaseContract.Presenter presenter = new StylistPresenter(model, stylistFragment);
         stylistFragment.setPresenter(presenter);
         //
-        GoodsFragment goodsFragment=new GoodsFragment();
-        BaseContract.Model goodsModel=new GoodModel();
-        BaseContract.Presenter goodsPresenter=new GoodsPresenter(goodsModel,goodsFragment);
+        GoodsFragment goodsFragment = new GoodsFragment();
+        BaseContract.Model goodsModel = new GoodModel();
+        BaseContract.Presenter goodsPresenter = new GoodsPresenter(goodsModel, goodsFragment);
         goodsFragment.setPresenter(goodsPresenter);
 
         datas = new ArrayList<>();

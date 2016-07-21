@@ -60,7 +60,10 @@ public class StylistFragment extends BaseFragment implements BaseContract.View<S
         stylistListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getActivity(), "aaa", Toast.LENGTH_SHORT).show();
+
                 int id = data.getData().getDesigners().get(i).getId();
+                Log.d("fffffff",id+" ");
                 String urlTop = "http://design.zuimeia.com/api/v1/designer/" + id + "/?device_id=863360020709857&platform=android&lang=zh&appVersion=1.0.4&appVersionCode=10004&systemVersion=23&countryCode=CN&user_id=0&token=&package_name=com.zuiapps.zuiworld";
                 String urlBelow = "http://design.zuimeia.com/api/v1/products/designer/" + id + "/?page=1&page_size=30&user_id=0&device_id=863360020709857&platform=android&lang=zh&appVersion=1.0.4&appVersionCode=10004&systemVersion=23&countryCode=CN&user_id=0&token=&package_name=com.zuiapps.zuiworld";
                 Intent intent = new Intent(context, StylistionIntoActivity.class);

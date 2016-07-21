@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.MyScrollView
+        android:id="@+id/stykisInfoScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/heardLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/stylistInfoViewPagerHeard"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp" />
+
+
+                <ImageView
+                    android:id="@+id/stylistInfoIcon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/stylistInfoViewPagerHeard"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="-30dp"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/stylistInfoAuthorName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/stylistInfoIcon"
+                    android:layout_centerHorizontal="true"
+                    android:text="作者" />
+
+                <TextView
+                    android:id="@+id/stylistInfoFounder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/stylistInfoAuthorName"
+                    android:layout_centerHorizontal="true"
+                    android:text="创始人" />
+
+                <TextView
+                    android:id="@+id/stylistInfoConcept"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/stylistInfoFounder"
+                    android:layout_centerHorizontal="true"
+                    android:text="观念" />
+
+                <CheckBox
+                    android:id="@+id/stylistInfoAttention"
+                    android:layout_width="60dp"
+                    android:layout_height="28dp"
+                    android:layout_below="@id/stylistInfoConcept"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/stylist_check_box"
+                    android:button="@null" />
+
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:id="@+id/suspensionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/radioGroupLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/stylistInfoTabLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="#313131"
+                        app:tabSelectedTextColor="#ffffff"
+                        app:tabTextColor="#ffffff" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/stylistInfoViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="2000dp"
+                android:background="#000000" />
+
+
+        </LinearLayout>
+
+    </com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.MyScrollView>
+
+    <LinearLayout
+        android:id="@+id/replaceLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="vertical" />
+
+</RelativeLayout>
