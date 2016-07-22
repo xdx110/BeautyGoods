@@ -8,6 +8,8 @@ import android.widget.Toast;
 import com.xdx.dllo.beautygoodsdemo.R;
 import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
 import com.xdx.dllo.beautygoodsdemo.base.BaseFragment;
+import com.xdx.dllo.beautygoodsdemo.base.CommonAdapter;
+import com.xdx.dllo.beautygoodsdemo.base.ViewHolder;
 import com.xdx.dllo.beautygoodsdemo.tools.UrlValues;
 
 /**
@@ -43,6 +45,12 @@ public class GoodsFragment extends BaseFragment implements BaseContract.View<Goo
         adapter.setGoodsBean(data);
         goodListView.setAdapter(adapter);
 
+//        goodListView.setAdapter(new CommonAdapter<GoodsBean.DataBean.ActivitiesBean>(context, data.getData().getActivities(), R.layout.item_goods_list_view) {
+//            @Override
+//            public void convert(ViewHolder holder, GoodsBean.DataBean.ActivitiesBean activitiesBean) {
+//                holder.setText(R.id.goods_head_image, activitiesBean.getImages().get(0));
+//            }
+//        });
     }
 
     @Override
