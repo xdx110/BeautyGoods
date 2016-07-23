@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
 import com.xdx.dllo.beautygoodsdemo.internet.MyOkHttp;
+import com.xdx.dllo.beautygoodsdemo.internet.NetworkRequests;
 import com.xdx.dllo.beautygoodsdemo.tools.UrlValues;
 
 /**
@@ -13,6 +14,19 @@ import com.xdx.dllo.beautygoodsdemo.tools.UrlValues;
 public class StylistModel implements BaseContract.Model {
     private BaseContract.Presenter presenter;
 
+    public StylistModel() {
+        NetworkRequests.getInstance().getDesignerBean(StylistBean.class, new NetworkRequests.OnTrue<StylistBean>() {
+            @Override
+            public void hasData(StylistBean data) {
+                presenter.urlSuccess(data);
+            }
+        }, new NetworkRequests.OnError() {
+            @Override
+            public void noHasData() {
+
+            }
+        });
+    }
 
     @Override
     public void getUrl(String url) {

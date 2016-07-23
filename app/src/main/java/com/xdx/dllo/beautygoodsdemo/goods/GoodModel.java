@@ -14,6 +14,7 @@ public class GoodModel implements BaseContract.Model {
     private BaseContract.Presenter presenter;
 
 
+
     @Override
     public void getUrl(String url) {
         MyOkHttp.getInstance().getRequestAsync(url, GoodsBean.class, new MyOkHttp.OnTrue<GoodsBean>() {

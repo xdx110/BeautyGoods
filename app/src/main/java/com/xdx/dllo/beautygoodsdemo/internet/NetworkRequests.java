@@ -67,7 +67,6 @@ public class NetworkRequests {
                         break;
                     case ERROR:
                         onError.noHasData();
-
                         break;
                 }
             }
