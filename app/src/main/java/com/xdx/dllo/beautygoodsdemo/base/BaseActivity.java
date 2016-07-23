@@ -37,8 +37,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 销毁Activity
      */
-    public void finish() {
+    @Override
+    public  void finish() {
         super.finish();
+
     }
 
 }
