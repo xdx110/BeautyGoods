@@ -9,11 +9,13 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 /**
  * Created by Muguoqiang on 16/7/19.
  */
 public class ViewHolder {
-
+    private Context context;
     private SparseArray<View> myViews;
     private int myPosition;
     private View myConvertView;
@@ -64,9 +66,9 @@ public class ViewHolder {
     }
 
     // 添加图片
-    public ViewHolder setImgResource(int viewId, int resId) {
+    public ViewHolder setImgResource(int viewId, String imageUrl) {
         ImageView imageView = getView(viewId);
-        imageView.setImageResource(resId);
+        Glide.with(context).load(imageUrl).into(imageView);
         return this;
     }
 

@@ -3,6 +3,8 @@ package com.xdx.dllo.beautygoodsdemo.stylist.stylistinto;
 import android.util.Log;
 
 import com.xdx.dllo.beautygoodsdemo.internet.MyOkHttp;
+import com.xdx.dllo.beautygoodsdemo.internet.NetworkRequests;
+import com.xdx.dllo.beautygoodsdemo.stylist.StylistBean;
 
 /**
  * Created by dllo on 16/7/20.
@@ -10,8 +12,13 @@ import com.xdx.dllo.beautygoodsdemo.internet.MyOkHttp;
 public class StyListIntoModel implements StylistIntoContract.Model {
     private StylistIntoContract.Presenter presenter;
 
+    public StyListIntoModel() {
+
+    }
+
     @Override
     public void getUrl(String urlTop, String urlBelow) {
+
         //topData
         MyOkHttp.getInstance().getRequestAsync(urlTop, StylistIntoTopBean.class, new MyOkHttp.OnTrue<StylistIntoTopBean>() {
             @Override
