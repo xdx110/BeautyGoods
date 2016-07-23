@@ -16,7 +16,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
-                android:id="@+id/heardLayout"
+                android:id="@+id/heardTopLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -69,43 +69,52 @@
                     android:layout_margin="10dp"
                     android:background="@drawable/stylist_check_box"
                     android:button="@null" />
-
-
             </RelativeLayout>
-
 
             <LinearLayout
                 android:id="@+id/suspensionLayout"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="vertical">
+                android:layout_height="22dp"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:id="@+id/radioGroupLayout"
+
+                <RadioGroup
+                    android:id="@+id/skyKisInfoRadioLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <android.support.design.widget.TabLayout
-                        android:id="@+id/stylistInfoTabLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="#313131"
-                        app:tabSelectedTextColor="#ffffff"
-                        app:tabTextColor="#ffffff" />
+                    <RadioButton
+                        android:id="@+id/styKisInfoWorksRbn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#000000"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="作品"
+                        android:textColor="#ffffff"
+                        android:textSize="18dp" />
 
-                </LinearLayout>
-
+                    <RadioButton
+                        android:id="@+id/styKisInfoPictorialRbn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#000000"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="画报"
+                        android:textColor="#ffffff"
+                        android:textSize="18dp" />
+                </RadioGroup>
 
             </LinearLayout>
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/stylistInfoViewPager"
+            <FrameLayout
+                android:id="@+id/replaceFrameLayout"
                 android:layout_width="match_parent"
-                android:layout_height="2000dp"
-                android:background="#000000" />
-
-
+                android:layout_height="match_parent" />
         </LinearLayout>
 
     </com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.MyScrollView>
@@ -113,7 +122,7 @@
     <LinearLayout
         android:id="@+id/replaceLayout"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="vertical" />
+        android:layout_height="22dp"
+        android:orientation="horizontal" />
 
 </RelativeLayout>

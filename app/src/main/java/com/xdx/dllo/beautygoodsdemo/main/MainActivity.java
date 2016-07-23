@@ -64,6 +64,7 @@ public class MainActivity extends BaseActivity {
         datas.add(new PictorialFragemnt());
         datas.add(goodsFragment);
         datas.add(stylistFragment);
+
         return datas;
     }
 
