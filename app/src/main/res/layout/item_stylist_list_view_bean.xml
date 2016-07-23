@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="#000000"
-    android:descendantFocusability="blocksDescendants"
-    android:layout_height="wrap_content">
+    android:descendantFocusability="blocksDescendants">
 
     <ImageView
         android:id="@+id/stylist_head_back_ground_image"
@@ -19,34 +19,34 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="-25dp"
 
-         />
+        />
 
     <TextView
-        android:textColor="#ffffff"
         android:id="@+id/stylist_author_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/stylist_author_image"
         android:layout_centerInParent="true"
-        android:text="Michael Saiger" />
+        android:text="Michael Saiger"
+        android:textColor="#ffffff" />
 
     <TextView
-        android:textColor="#EBEBEB"
         android:id="@+id/stylist_founder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/stylist_author_name"
         android:layout_centerInParent="true"
-        android:text="Miansai 创始人" />
+        android:text="Miansai 创始人"
+        android:textColor="#EBEBEB" />
 
     <CheckBox
-        android:layout_margin="10dp"
-        android:button="@null"
         android:id="@+id/stylist_attention"
         android:layout_width="60dp"
         android:layout_height="28dp"
         android:layout_below="@id/stylist_founder"
         android:layout_centerInParent="true"
-        android:background="@drawable/stylist_check_box" />
+        android:layout_margin="10dp"
+        android:background="@drawable/stylist_check_box"
+        android:button="@null" />
 
 </RelativeLayout>

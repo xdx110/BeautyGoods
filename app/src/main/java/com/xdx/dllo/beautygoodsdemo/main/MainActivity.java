@@ -3,6 +3,10 @@ package com.xdx.dllo.beautygoodsdemo.main;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.xdx.dllo.beautygoodsdemo.R;
 import com.xdx.dllo.beautygoodsdemo.base.BaseActivity;
@@ -18,11 +22,13 @@ import com.xdx.dllo.beautygoodsdemo.stylist.StylistPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private MainAdapter mainAdapter;
     private List<Fragment> datas;
+    private ImageView personIv;
+    private DrawerLayout drawerLayout;
 
 
     @Override
@@ -34,6 +40,9 @@ public class MainActivity extends BaseActivity {
     public void initView() {
         tabLayout = (TabLayout) findViewById(R.id.aty_main_tab);
         viewPager = (ViewPager) findViewById(R.id.aty_main_vp);
+        personIv = (ImageView) findViewById(R.id.mainIvPerson);
+        personIv.setOnClickListener(this);
+        drawerLayout = (DrawerLayout) findViewById(R.id.aty_main_dlay);
     }
 
     @Override
@@ -43,6 +52,8 @@ public class MainActivity extends BaseActivity {
         viewPager.setAdapter(mainAdapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setSelectedTabIndicatorHeight(0);
+        getSupportFragmentManager().beginTransaction().add(R.id.main_flay, new MainFragment()).commit();
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
 
 
@@ -68,4 +79,12 @@ public class MainActivity extends BaseActivity {
     }
 
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.mainIvPerson:
+                drawerLayout.openDrawer(Gravity.RIGHT);
+                break;
+        }
+    }
 }
