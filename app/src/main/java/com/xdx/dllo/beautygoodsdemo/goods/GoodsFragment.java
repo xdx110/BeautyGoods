@@ -44,13 +44,7 @@ public class GoodsFragment extends BaseFragment implements BaseContract.View<Goo
         Log.d("GoodsFragment", "data:" + data);
         adapter.setGoodsBean(data);
         goodListView.setAdapter(adapter);
-
-//        goodListView.setAdapter(new CommonAdapter<GoodsBean.DataBean.ActivitiesBean>(context, data.getData().getActivities(), R.layout.item_goods_list_view) {
-//            @Override
-//            public void convert(ViewHolder holder, GoodsBean.DataBean.ActivitiesBean activitiesBean) {
-//                holder.setText(R.id.goods_head_image, activitiesBean.getImages().get(0));
-//            }
-//        });
+        
     }
 
     @Override

@@ -1,10 +1,9 @@
 package com.xdx.dllo.beautygoodsdemo.main;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -14,6 +13,7 @@ import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
 import com.xdx.dllo.beautygoodsdemo.goods.GoodModel;
 import com.xdx.dllo.beautygoodsdemo.goods.GoodsFragment;
 import com.xdx.dllo.beautygoodsdemo.goods.GoodsPresenter;
+import com.xdx.dllo.beautygoodsdemo.into.MyActivity;
 import com.xdx.dllo.beautygoodsdemo.pictorial.PictorialFragemnt;
 import com.xdx.dllo.beautygoodsdemo.stylist.StylistFragment;
 import com.xdx.dllo.beautygoodsdemo.stylist.StylistModel;
@@ -28,7 +28,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private MainAdapter mainAdapter;
     private List<Fragment> datas;
     private ImageView personIv;
-    private DrawerLayout drawerLayout;
 
 
     @Override
@@ -42,7 +41,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         viewPager = (ViewPager) findViewById(R.id.aty_main_vp);
         personIv = (ImageView) findViewById(R.id.mainIvPerson);
         personIv.setOnClickListener(this);
-        drawerLayout = (DrawerLayout) findViewById(R.id.aty_main_dlay);
+
     }
 
     @Override
@@ -52,10 +51,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         viewPager.setAdapter(mainAdapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setSelectedTabIndicatorHeight(0);
-        getSupportFragmentManager().beginTransaction().add(R.id.main_flay, new MainFragment()).commit();
-        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-
-
 
     }
 
@@ -84,7 +79,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.mainIvPerson:
-                drawerLayout.openDrawer(Gravity.RIGHT);
+                Intent intent=new Intent(this,MyActivity.class);
+                startActivity(intent);
                 break;
         }
     }

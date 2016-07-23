@@ -10,23 +10,23 @@
         android:background="@mipmap/personbeijing">
 
         <ImageView
-            android:id="@+id/fra_main_head_iv"
+            android:id="@+id/aty_into_head_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:src="@mipmap/ic_mine_portrait" />
 
         <TextView
-            android:id="@+id/fra_main_tv"
+            android:id="@+id/aty_into_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/fra_main_head_iv"
+            android:layout_below="@id/aty_into_head_iv"
             android:layout_centerInParent="true"
             android:layout_margin="10dp"
             android:text="登录"
             android:textColor="#e7e4e4" />
         <ImageView
-            android:id="@+id/fra_main_redact_iv"
+            android:id="@+id/aty_into_redact_iv"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@mipmap/bianji"
@@ -36,6 +36,7 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/aty_into_pictorial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -72,7 +73,7 @@
         android:background="#7c7a7a" />
 
     <LinearLayout
-        android:id="@+id/fra_me_linl_collect"
+        android:id="@+id/aty_into_linl_stylist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -109,7 +110,7 @@
         android:background="#7c7a7a" />
 
     <LinearLayout
-        android:id="@+id/fra_me_linl_history"
+        android:id="@+id/aty_into_linl_wish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

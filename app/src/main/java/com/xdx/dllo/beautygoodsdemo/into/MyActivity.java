@@ -1,22 +1,27 @@
 package com.xdx.dllo.beautygoodsdemo.into;
 
-import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.tencent.connect.UserInfo;
-import com.tencent.connect.auth.QQAuth;
 import com.tencent.connect.auth.QQToken;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
-import com.xdx.dllo.beautygoodsdemo.base.BaseActivity;
+import com.xdx.dllo.beautygoodsdemo.R;
 import com.xdx.dllo.beautygoodsdemo.main.MainActivity;
+import com.xdx.dllo.beautygoodsdemo.main.MyApp;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,34 +37,96 @@ import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.OtherLoginListener;
 import cn.bmob.v3.listener.UpdateListener;
+import me.imid.swipebacklayout.lib.SwipeBackLayout;
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 /**
- * Created by dllo on 16/7/21.
+ * Created by dllo on 16/7/22.
  */
-public class QQInto {
+public class MyActivity extends SwipeBackActivity implements View.OnClickListener {
+    private ImageView redactIv, headIv;
+    private SwipeBackLayout swipeBackLayout;
+    private QQInto into;
+    private ImageView qqIv;
+
+    private AlertDialog dialog;
     private Tencent mTencent;
     private String mAppid = "1105558146";
     private BaseUiListener baseUiListener;
-    private Context context;
     private String openid, access_token, expires_in;
     private UserInfo mInfo;
     private Bitmap bitmap;
     private String nicknameString;
 
-    public QQInto(Context context) {
-        this.context=context;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_into);
+        redactIv = (ImageView) findViewById(R.id.aty_into_redact_iv);
+        headIv = (ImageView) findViewById(R.id.aty_into_head_iv);
+        redactIv = (ImageView) findViewById(R.id.aty_into_redact_iv);
+        redactIv.setOnClickListener(this);
+        swipeBackLayout = getSwipeBackLayout();
+        swipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
+        swipeBackLayout.setEdgeSize(300);
+        into = new QQInto(this);
+        mTencent = Tencent.createInstance(mAppid, this);
+        BmobUser bmobUser = BmobUser.getCurrentUser(this);
+        if (bmobUser != null) {
+
+        } else {
+            headIv.setOnClickListener(this);
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.aty_into_head_iv:
+                initAlertDialog();
+                break;
+            case R.id.aty_into_redact_iv:
+                Intent intent = new Intent(this, SetupActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Tencent.onActivityResultData(requestCode, resultCode, data, baseUiListener);
+    }
+
+    private void initAlertDialog() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.item_alert_dialog, null);
+        qqIv = (ImageView) view.findViewById(R.id.item_alert_qq_iv);
+        builder.setView(view);
+        dialog = builder.show();
+        qqIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                into.LoginQQ();
+                LoginQQ();
+
+
+            }
+        });
+
     }
 
     public void LoginQQ() {
-        mTencent = Tencent.createInstance(mAppid, context.getApplicationContext());
+
         baseUiListener = new BaseUiListener();
-        mTencent.login(new MyActivity(), "all", baseUiListener);
+        mTencent.login(MyActivity.this, "all", baseUiListener);
     }
 
     private class BaseUiListener implements IUiListener {
 
         @Override
         public void onComplete(Object o) {
+            dialog.dismiss();
             try {
                 openid = ((JSONObject) o).getString("openid");
                 Log.d("222222", openid);
@@ -70,7 +137,7 @@ public class QQInto {
                 mTencent.setOpenId(openid);
                 mTencent.setAccessToken(access_token, expires_in);
                 BmobUser.BmobThirdUserAuth authInfo = new BmobUser.BmobThirdUserAuth("qq", access_token, expires_in, openid);
-                BmobUser.associateWithAuthData(context, authInfo, new UpdateListener() {
+                BmobUser.associateWithAuthData(MyActivity.this, authInfo, new UpdateListener() {
                     @Override
                     public void onSuccess() {
                         Log.d("关联第三方成功", "1111");
@@ -81,15 +148,15 @@ public class QQInto {
 
                     }
                 });
-                BmobUser.loginWithAuthData(context, authInfo, new OtherLoginListener() {
+                BmobUser.loginWithAuthData(MyActivity.this, authInfo, new OtherLoginListener() {
                     @Override
                     public void onSuccess(JSONObject jsonObject) {
                         Log.d("第三方登录成功", "2222");
-                        BmobUser bmobUser = BmobUser.getCurrentUser(context);
+                        BmobUser bmobUser = BmobUser.getCurrentUser(MyActivity.this);
                         BmobQuery<BombBean> bmobQuery = new BmobQuery<>();
                         String userName = bmobUser.getUsername();
                         bmobQuery.addWhereEqualTo("userName", userName);
-                        bmobQuery.findObjects(context, new FindListener<BombBean>() {
+                        bmobQuery.findObjects(MyActivity.this, new FindListener<BombBean>() {
                             @Override
                             public void onSuccess(List<BombBean> list) {
                                 //把查出来的 放入本地数据库 登录时 吧网络数据放入本地
@@ -115,7 +182,7 @@ public class QQInto {
              sdk给我们提供了一个类UserInfo，这个类中封装了QQ用户的一些信息，我么可以通过这个类拿到这些信息
              如何得到这个UserInfo类呢？  */
             QQToken qqToken = mTencent.getQQToken();
-            mInfo = new UserInfo(context.getApplicationContext(), qqToken);
+            mInfo = new UserInfo(MyActivity.this.getApplicationContext(), qqToken);
             //这样我们就拿到这个类了，之后的操作就跟上面的一样了，同样是解析JSON
             mInfo.getUserInfo(new IUiListener() {
                 @Override
@@ -212,7 +279,7 @@ public class QQInto {
                 JSONObject response = (JSONObject) msg.obj;
                 if (response.has("nickname")) {
                     try {
-                        //用户名
+                        //用户名(qq名)
                         nicknameString = response.getString("nickname");
                         //把用户名存入本地数据库
 

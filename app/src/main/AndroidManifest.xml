@@ -23,6 +23,13 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden">
+        </activity>
+
 
         <activity
             android:name="com.tencent.tauth.AuthActivity"
@@ -36,6 +43,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".stylist.stylistinto.StylistionIntoActivity"/>
+        <activity android:name=".into.MyActivity"/>
+        <activity android:name=".into.SetupActivity"/>
     </application>
 
 </manifest>
