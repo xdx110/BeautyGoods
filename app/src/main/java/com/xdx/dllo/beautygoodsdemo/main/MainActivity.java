@@ -75,6 +75,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         datas.add(new PictorialFragemnt());
         datas.add(goodsFragment);
         datas.add(stylistFragment);
+
         return datas;
     }
 

@@ -58,7 +58,6 @@ public class StyListInfoViewPagerAdapter extends PagerAdapter {
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         if (container.getChildAt(position % imageViews.size()) == object) {
-
             //销毁指定位置的ImageView回收内存
             container.removeViewAt(position % imageViews.size());
         }

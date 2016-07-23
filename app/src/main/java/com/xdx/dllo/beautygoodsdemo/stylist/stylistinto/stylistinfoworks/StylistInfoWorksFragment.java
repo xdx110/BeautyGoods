@@ -20,9 +20,9 @@ import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.StylistIntoTopBean;
  * Created by dllo on 16/7/21.
  */
 public class StylistInfoWorksFragment extends BaseFragment {
-    private RecyclerView stylistInfoWorksRecycler;
-    private StylistInfoWorksAdapter stylistInfoWorksAdapter;
-    private StylistIntoBelowBean.DataBean data;
+//    private RecyclerView stylistInfoWorksRecycler;
+//    private StylistInfoWorksAdapter stylistInfoWorksAdapter;
+//    private StylistIntoBelowBean.DataBean data;
 
 
 
@@ -38,8 +38,8 @@ public class StylistInfoWorksFragment extends BaseFragment {
 
 
 
-        stylistInfoWorksRecycler = (RecyclerView) view.findViewById(R.id.stylistInfoWorksRecycler);
-        stylistInfoWorksAdapter = new StylistInfoWorksAdapter(context);
+//        stylistInfoWorksRecycler = (RecyclerView) view.findViewById(R.id.stylistInfoWorksRecycler);
+//        stylistInfoWorksAdapter = new StylistInfoWorksAdapter(context);
 
 
     }
@@ -47,14 +47,14 @@ public class StylistInfoWorksFragment extends BaseFragment {
     @Override
     public void initDate() {
 
-        Bundle bundle1 = getArguments();
-        data= (StylistIntoBelowBean.DataBean) bundle1.getSerializable("data");
-
-        GridLayoutManager manager=new GridLayoutManager(getActivity(),2);
-        manager.setOrientation(LinearLayoutManager.VERTICAL);
-        stylistInfoWorksRecycler.setLayoutManager(manager);
-        stylistInfoWorksAdapter.setStylistIntoBelowBean(data);
-        stylistInfoWorksRecycler.setAdapter(stylistInfoWorksAdapter);
+//        Bundle bundle1 = getArguments();
+//        data= (StylistIntoBelowBean.DataBean) bundle1.getSerializable("data");
+//
+//        GridLayoutManager manager=new GridLayoutManager(getActivity(),2);
+//        manager.setOrientation(LinearLayoutManager.VERTICAL);
+//        stylistInfoWorksRecycler.setLayoutManager(manager);
+//        stylistInfoWorksAdapter.setStylistIntoBelowBean(data);
+//        stylistInfoWorksRecycler.setAdapter(stylistInfoWorksAdapter);
 
 
 
