@@ -75,7 +75,7 @@
                 android:id="@+id/suspensionLayout"
                 android:layout_width="match_parent"
                 android:layout_height="22dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
 
                 <RadioGroup
@@ -109,13 +109,17 @@
                         android:textSize="18dp" />
                 </RadioGroup>
 
+
             </LinearLayout>
 
             <FrameLayout
                 android:id="@+id/replaceFrameLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                android:background="#000000" />
+
         </LinearLayout>
+
 
     </com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.MyScrollView>
 

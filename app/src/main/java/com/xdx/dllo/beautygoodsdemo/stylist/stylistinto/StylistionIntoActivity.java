@@ -15,6 +15,7 @@ import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.stylistinfoworks.Stylist
 public class StylistionIntoActivity extends BaseActivity {
 
 
+
     @Override
     public int initLayout() {
         return R.layout.activity_stylistioninfo;
@@ -29,26 +30,28 @@ public class StylistionIntoActivity extends BaseActivity {
     @Override
     public void initDate() {
 
-        Intent intent = getIntent();
-        String top = intent.getStringExtra("urlTop");
-        Log.d("top", top);
-
-        String bellow = intent.getStringExtra("urlBelow");
-        Log.d("top22", bellow);
 
         StyKisIntoFragment styKisIntoFragment = new StyKisIntoFragment();
 
+
+
         Bundle bundle = new Bundle();
-        bundle.putString("top", top);
-        bundle.putString("bellow", bellow);
+        bundle.putInt("id", getIntent().getIntExtra("id", 0));
         styKisIntoFragment.setArguments(bundle);
 
 
-
-        StylistIntoContract.Model model = new StyListIntoModel();
-        StylistIntoContract.Presenter presenter = new StyKistIntoPresenter(model, styKisIntoFragment);
+        StyListIntoModel model = new StyListIntoModel();
+        StyKistIntoPresenter presenter = new StyKistIntoPresenter(model, styKisIntoFragment);
         styKisIntoFragment.setPresenter(presenter);
-        getSupportFragmentManager().beginTransaction().add(R.id.stylistInfoFrameLayout,styKisIntoFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.stylistInfoFrameLayout, styKisIntoFragment).commit();
+
+
+
+
+
+
+
+
 
     }
 }

@@ -1,5 +1,7 @@
 package com.xdx.dllo.beautygoodsdemo.stylist;
 
+import android.util.Log;
+
 import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
 import com.xdx.dllo.beautygoodsdemo.goods.GoodsBean;
 
@@ -15,20 +17,20 @@ public class StylistPresenter implements BaseContract.Presenter<StylistBean> {
         this.view = view;
     }
 
+
     @Override
-    public void getUrl(String url) {
-        model.getUrl(url);
+    public void onOk(String id) {
+        model.onOk(id);
     }
 
     @Override
-    public void urlSuccess(StylistBean data) {
+    public void setData(StylistBean data) {
         view.getData(data);
     }
 
-
     @Override
-    public void urlError() {
-        view.urlError("网络请求失败");
+    public void setErrorMessage() {
+        view.getErrorMessage("shibai");
     }
 
     @Override

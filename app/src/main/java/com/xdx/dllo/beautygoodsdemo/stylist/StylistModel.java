@@ -14,38 +14,25 @@ import com.xdx.dllo.beautygoodsdemo.tools.UrlValues;
 public class StylistModel implements BaseContract.Model {
     private BaseContract.Presenter presenter;
 
-    public StylistModel() {
+
+
+
+
+
+    @Override
+    public void onOk(String id) {
         NetworkRequests.getInstance().getDesignerBean(StylistBean.class, new NetworkRequests.OnTrue<StylistBean>() {
             @Override
             public void hasData(StylistBean data) {
-                presenter.urlSuccess(data);
+                presenter.setData(data);
             }
         }, new NetworkRequests.OnError() {
             @Override
             public void noHasData() {
-
+                presenter.setErrorMessage();
             }
         });
     }
-
-    @Override
-    public void getUrl(String url) {
-        MyOkHttp.getInstance().getRequestAsync(url, StylistBean.class, new MyOkHttp.OnTrue<StylistBean>() {
-            @Override
-            public void hasData(StylistBean data) {
-                Log.d("StylistModel", Thread.currentThread().getName());
-                presenter.urlSuccess(data);
-
-            }
-        }, new MyOkHttp.OnError() {
-            @Override
-            public void noHasData() {
-
-                presenter.urlError();
-            }
-        });
-    }
-
 
     @Override
     public void setPresenter(BaseContract.Presenter presenter) {

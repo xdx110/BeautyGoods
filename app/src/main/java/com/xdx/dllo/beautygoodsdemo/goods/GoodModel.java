@@ -15,27 +15,28 @@ public class GoodModel implements BaseContract.Model {
 
 
 
+
     @Override
-    public void getUrl(String url) {
-        MyOkHttp.getInstance().getRequestAsync(url, GoodsBean.class, new MyOkHttp.OnTrue<GoodsBean>() {
+    public void onOk(String id) {
+        NetworkRequests.getInstance().getGoodsBean(id, GoodsBean.class, new NetworkRequests.OnTrue<GoodsBean>() {
             @Override
             public void hasData(GoodsBean data) {
-                Log.d("GoodModel", "data:" + data);
-                presenter.urlSuccess(data);
+
+                Log.d("aa",data.getData().getActivities().size()+"");
+                presenter.setData(data);
 
             }
-        }, new MyOkHttp.OnError() {
+        }, new NetworkRequests.OnError() {
             @Override
             public void noHasData() {
-                presenter.urlError();
+
             }
         });
 
     }
-
-
     @Override
     public void setPresenter(BaseContract.Presenter presenter) {
         this.presenter = presenter;
     }
+
 }

@@ -5,26 +5,27 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
-import android.widget.FrameLayout;
+import android.widget.ScrollView;
 
 import com.xdx.dllo.beautygoodsdemo.R;
 import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
 import com.xdx.dllo.beautygoodsdemo.base.BaseFragment;
-import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.StyKisIntoFragment;
+import com.xdx.dllo.beautygoodsdemo.internet.NetworkRequests;
 import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.StylistIntoBelowBean;
-import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.StylistIntoContract;
-import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.StylistIntoTopBean;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 /**
  * Created by dllo on 16/7/21.
  */
-public class StylistInfoWorksFragment extends BaseFragment {
-//    private RecyclerView stylistInfoWorksRecycler;
-//    private StylistInfoWorksAdapter stylistInfoWorksAdapter;
-//    private StylistIntoBelowBean.DataBean data;
-
-
+public class StylistInfoWorksFragment extends BaseFragment implements BaseContract.View<StylistIntoBelowBean>, View.OnClickListener {
+    private RecyclerView stylistInfoWorksRecycler;
+    private StylistInfoWorksAdapter stylistInfoWorksAdapter;
+    private BaseContract.Presenter presenter;
+    private ScrollView iiii;
 
     @Override
     public int setLayout() {
@@ -34,32 +35,52 @@ public class StylistInfoWorksFragment extends BaseFragment {
 
     @Override
     public void initView(View view) {
-
-
-
-
-//        stylistInfoWorksRecycler = (RecyclerView) view.findViewById(R.id.stylistInfoWorksRecycler);
-//        stylistInfoWorksAdapter = new StylistInfoWorksAdapter(context);
-
+        stylistInfoWorksRecycler = (RecyclerView) view.findViewById(R.id.stylistInfoWorksRecycler);
+        iiii = (ScrollView) view.findViewById(R.id.iiii);
+        iiii.setOnClickListener(this);
 
     }
 
     @Override
     public void initDate() {
+        stylistInfoWorksAdapter = new StylistInfoWorksAdapter(context);
 
-//        Bundle bundle1 = getArguments();
-//        data= (StylistIntoBelowBean.DataBean) bundle1.getSerializable("data");
-//
-//        GridLayoutManager manager=new GridLayoutManager(getActivity(),2);
-//        manager.setOrientation(LinearLayoutManager.VERTICAL);
-//        stylistInfoWorksRecycler.setLayoutManager(manager);
-//        stylistInfoWorksAdapter.setStylistIntoBelowBean(data);
-//        stylistInfoWorksRecycler.setAdapter(stylistInfoWorksAdapter);
-
+        Bundle bundle = getArguments();
+        String id = bundle.getString("IDworks");
+        Log.d("id++++++++++",id);
+        presenter.onOk(id);
+        presenter.start();
 
 
     }
 
 
+    @Override
+    public void getData(StylistIntoBelowBean data) {
+        Log.d("dataaaaaaa",data+"");
+        stylistInfoWorksAdapter.setStylistIntoBelowBean(data);
+        GridLayoutManager manager=new GridLayoutManager(context,2);
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        stylistInfoWorksRecycler.setLayoutManager(manager);
+        stylistInfoWorksRecycler.setAdapter(stylistInfoWorksAdapter);
 
+
+    }
+
+    @Override
+    public void getErrorMessage(String errorMessage) {
+
+    }
+
+    @Override
+    public void setPresenter(BaseContract.Presenter presenter) {
+        this.presenter = presenter;
+
+
+    }
+
+    @Override
+    public void onClick(View view) {
+
+    }
 }

@@ -121,7 +121,7 @@ public class NetworkRequests {
      * @param onError
      * @param <T>
      */
-    public <T> void getDesignerBean(Class<T> t, OnTrue<T> onTrue, OnError onError) {
+    public <T> void getDesignerBean(Class<T> t,   OnTrue<T> onTrue, OnError onError) {
 
 
         getRequestAsync(Urls.DESIGNER_URL, t, onTrue, onError);

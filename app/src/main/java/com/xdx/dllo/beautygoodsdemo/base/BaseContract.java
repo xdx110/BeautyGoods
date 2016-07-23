@@ -6,23 +6,29 @@ package com.xdx.dllo.beautygoodsdemo.base;
 public interface BaseContract {
 
     interface Presenter<T> extends BasePresenter {
-        //从view得到url
-        void getUrl(String url);
+        //从v-->P传id
+        void onOk(String id);
 
-        //从model得到集合
-        void urlSuccess(T data);
+        //从p--->V传数据
+        void setData(T data);
 
-        void urlError();
+        //从p--->V传数据传送失败
+        void setErrorMessage();
     }
 
     interface Model extends BaseModel<Presenter> {
-        //从 presenter获取url
-        void getUrl(String url);
+
+        // 从p-->m传id
+        void onOk(String id);
     }
 
     interface View<T> extends BaseView<Presenter> {
+
+        //v获取数据
         void getData(T data);
-        void urlError(String errorMessage);
+
+        //v获取数据失败
+        void getErrorMessage(String errorMessage);
 
     }
 }

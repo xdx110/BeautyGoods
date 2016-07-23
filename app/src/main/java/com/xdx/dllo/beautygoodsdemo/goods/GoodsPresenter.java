@@ -7,7 +7,7 @@ import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
 /**
  * Created by dllo on 16/7/19.
  */
-public class GoodsPresenter implements BaseContract.Presenter <GoodsBean>{
+public class GoodsPresenter implements BaseContract.Presenter<GoodsBean> {
     private BaseContract.Model model;
     private BaseContract.View view;
 
@@ -16,20 +16,20 @@ public class GoodsPresenter implements BaseContract.Presenter <GoodsBean>{
         this.view = view;
     }
 
+
     @Override
-    public void getUrl(String url) {
-        model.getUrl(url);
+    public void onOk(String id) {
+        model.onOk(id);
     }
 
     @Override
-    public void urlSuccess(GoodsBean data) {
-        Log.d("GoodsPresenter", "data:" + data);
+    public void setData(GoodsBean data) {
         view.getData(data);
     }
 
     @Override
-    public void urlError() {
-        view.urlError("请求失败");
+    public void setErrorMessage() {
+        view.getErrorMessage("shibai");
     }
 
     @Override

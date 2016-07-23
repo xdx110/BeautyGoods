@@ -1,35 +1,36 @@
 package com.xdx.dllo.beautygoodsdemo.stylist.stylistinto;
 
+import android.util.Log;
+
+import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
+
 /**
  * Created by dllo on 16/7/20.
  */
-public class StyKistIntoPresenter implements StylistIntoContract.Presenter {
-    private StylistIntoContract.Model model;
-    private StylistIntoContract.View view;
+public class StyKistIntoPresenter implements BaseContract.Presenter<StylistIntoTopBean> {
 
-    public StyKistIntoPresenter(StylistIntoContract.Model model, StylistIntoContract.View view) {
+    private BaseContract.Model model;
+    private BaseContract.View view;
+
+    public StyKistIntoPresenter(BaseContract.Model model, BaseContract.View view) {
         this.model = model;
         this.view = view;
     }
 
     @Override
-    public void getUrl(String urlTop, String urlBelow) {
-        model.getUrl(urlTop, urlBelow);
+    public void onOk(String id) {
+        Log.d("id------",id);
+        model.onOk(id);
     }
 
     @Override
-    public void getDataTop(StylistIntoTopBean dataTop) {
-        view.getDataTop(dataTop);
+    public void setData(StylistIntoTopBean data) {
+        view.getData(data);
     }
 
     @Override
-    public void getDataBelow(StylistIntoBelowBean dataBelow) {
-        view.getDataBelow(dataBelow);
-    }
-
-    @Override
-    public void urlError() {
-        view.urlError("网络请求出错");
+    public void setErrorMessage() {
+        view.getErrorMessage("shibai");
     }
 
     @Override

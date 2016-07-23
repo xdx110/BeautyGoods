@@ -16,14 +16,14 @@ import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.StylistIntoBelowBean;
  * Created by dllo on 16/7/21.
  */
 public class StylistInfoWorksAdapter extends RecyclerView.Adapter<StylistInfoWorksAdapter.ViewHolder> {
-    private StylistIntoBelowBean.DataBean stylistIntoBelowBean;
+    private StylistIntoBelowBean stylistIntoBelowBean;
     private Context context;
 
     public StylistInfoWorksAdapter(Context context) {
         this.context = context;
     }
 
-    public void setStylistIntoBelowBean(StylistIntoBelowBean.DataBean stylistIntoBelowBean) {
+    public void setStylistIntoBelowBean(StylistIntoBelowBean stylistIntoBelowBean) {
         this.stylistIntoBelowBean = stylistIntoBelowBean;
         notifyDataSetChanged();
     }
@@ -37,15 +37,15 @@ public class StylistInfoWorksAdapter extends RecyclerView.Adapter<StylistInfoWor
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-     Log.e("images",stylistIntoBelowBean.getProducts().get(position).getImages().get(0));
-        Glide.with(context).load(stylistIntoBelowBean.getProducts().get(position).getImages().get(0)).error(R.mipmap.icon_splash).into(holder.itemStylistInfoWorksIv);
+
+        Glide.with(context).load(stylistIntoBelowBean.getData().getProducts().get(position).getImages().get(0)).error(R.mipmap.icon_splash).into(holder.itemStylistInfoWorksIv);
 
     }
 
     @Override
     public int getItemCount() {
 
-        return stylistIntoBelowBean.getProducts().size();
+        return stylistIntoBelowBean.getData().getProducts().size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

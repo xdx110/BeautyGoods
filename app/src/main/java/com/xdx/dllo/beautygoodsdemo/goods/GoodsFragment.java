@@ -10,6 +10,8 @@ import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
 import com.xdx.dllo.beautygoodsdemo.base.BaseFragment;
 import com.xdx.dllo.beautygoodsdemo.base.CommonAdapter;
 import com.xdx.dllo.beautygoodsdemo.base.ViewHolder;
+import com.xdx.dllo.beautygoodsdemo.internet.NetworkRequests;
+import com.xdx.dllo.beautygoodsdemo.stylist.StylistBean;
 import com.xdx.dllo.beautygoodsdemo.tools.UrlValues;
 
 /**
@@ -30,32 +32,31 @@ public class GoodsFragment extends BaseFragment implements BaseContract.View<Goo
     public void initView(View view) {
         goodListView = (ListView) view.findViewById(R.id.goods_list_view);
         adapter = new GoodsAdapter(context);
-        presenter.getUrl(UrlValues.GOODS_URL);
+        long time = System.currentTimeMillis();
+        String id = String.valueOf(time / 1000);
+        Log.d("aaa========",id);
+        presenter.onOk(id+"000L");
         presenter.start();
+
+
     }
 
     @Override
     public void initDate() {
 
+
     }
+
 
     @Override
     public void getData(GoodsBean data) {
-        Log.d("GoodsFragment", "data:" + data);
         adapter.setGoodsBean(data);
         goodListView.setAdapter(adapter);
-
-//        goodListView.setAdapter(new CommonAdapter<GoodsBean.DataBean.ActivitiesBean>(context, data.getData().getActivities(), R.layout.item_goods_list_view) {
-//            @Override
-//            public void convert(ViewHolder holder, GoodsBean.DataBean.ActivitiesBean activitiesBean) {
-//                holder.setText(R.id.goods_head_image, activitiesBean.getImages().get(0));
-//            }
-//        });
     }
 
     @Override
-    public void urlError(String errorMessage) {
-        Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
+    public void getErrorMessage(String errorMessage) {
+
     }
 
     @Override
