@@ -56,7 +56,7 @@
                     android:layout_below="@id/item_alert_qq_iv"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
-                    android:text="新浪微博" />
+                    android:text="QQ登录" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -78,7 +78,7 @@
                     android:layout_below="@id/item_alert_weixin_iv"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
-                    android:text="新浪微博" />
+                    android:text="微信登录" />
             </RelativeLayout>
         </LinearLayout>
 

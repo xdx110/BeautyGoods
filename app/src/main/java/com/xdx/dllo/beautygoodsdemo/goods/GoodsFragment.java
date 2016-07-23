@@ -52,6 +52,7 @@ public class GoodsFragment extends BaseFragment implements BaseContract.View<Goo
     public void getData(GoodsBean data) {
         adapter.setGoodsBean(data);
         goodListView.setAdapter(adapter);
+
     }
 
     @Override
