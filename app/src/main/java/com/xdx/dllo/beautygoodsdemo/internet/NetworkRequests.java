@@ -7,6 +7,7 @@ package com.xdx.dllo.beautygoodsdemo.internet;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -14,6 +15,7 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.Headers;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -75,11 +77,13 @@ public class NetworkRequests {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+
                 onError.noHasData();
             }
 
             @Override
             public void onResponse(Call call, Response response) {
+
                 T t = null;
                 String result = null;
                 try {
