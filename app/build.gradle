@@ -38,4 +38,5 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.android.support:design:23.4.0'
     compile 'me.imid.swipebacklayout.lib:library:1.0.0'
+    compile files('libs/lite-orm-1.9.1.jar')
 }

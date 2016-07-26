@@ -1,8 +1,11 @@
 package com.xdx.dllo.beautygoodsdemo.into;
 
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -12,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.auth.QQToken;
@@ -19,6 +23,8 @@ import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
 import com.xdx.dllo.beautygoodsdemo.R;
+import com.xdx.dllo.beautygoodsdemo.liteorm.LiteOrmMyBean;
+import com.xdx.dllo.beautygoodsdemo.liteorm.SingleLiteOrm;
 import com.xdx.dllo.beautygoodsdemo.main.MainActivity;
 import com.xdx.dllo.beautygoodsdemo.main.MyApp;
 
@@ -44,11 +50,10 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
  * Created by dllo on 16/7/22.
  */
 public class MyActivity extends SwipeBackActivity implements View.OnClickListener {
-    private ImageView redactIv, headIv;
+    private ImageView headIv;
     private SwipeBackLayout swipeBackLayout;
     private QQInto into;
     private ImageView qqIv;
-
     private AlertDialog dialog;
     private Tencent mTencent;
     private String mAppid = "1105558146";
@@ -57,25 +62,41 @@ public class MyActivity extends SwipeBackActivity implements View.OnClickListene
     private UserInfo mInfo;
     private Bitmap bitmap;
     private String nicknameString;
+    private LiteOrmMyBean myBean;
+    private MyActivityReceiver receiver;
+    private TextView nameTv;
+    private BmobUser bmobUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_into);
-        redactIv = (ImageView) findViewById(R.id.aty_into_redact_iv);
+
+        receiver = new MyActivityReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("com.xdx.dllo.beautygoodsdemo.into");
+        registerReceiver(receiver, filter);
+
+        nameTv = (TextView) findViewById(R.id.aty_into_tv);
+        myBean = new LiteOrmMyBean();
         headIv = (ImageView) findViewById(R.id.aty_into_head_iv);
-        redactIv = (ImageView) findViewById(R.id.aty_into_redact_iv);
-        redactIv.setOnClickListener(this);
         swipeBackLayout = getSwipeBackLayout();
         swipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
         swipeBackLayout.setEdgeSize(300);
         into = new QQInto(this);
         mTencent = Tencent.createInstance(mAppid, this);
-        BmobUser bmobUser = BmobUser.getCurrentUser(this);
-        if (bmobUser != null) {
+        bmobUser = BmobUser.getCurrentUser(this);
+        initInto();
 
-        } else {
-            headIv.setOnClickListener(this);
+    }
+
+    private class MyActivityReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.d("xx", "接到了");
+            initInto();
+
         }
     }
 
@@ -85,10 +106,27 @@ public class MyActivity extends SwipeBackActivity implements View.OnClickListene
             case R.id.aty_into_head_iv:
                 initAlertDialog();
                 break;
-            case R.id.aty_into_redact_iv:
-                Intent intent = new Intent(this, SetupActivity.class);
-                startActivity(intent);
-                break;
+        }
+    }
+
+    public void initInto() {
+
+        if (bmobUser != null) {
+            Log.d("xx", "00");
+            Bitmap bitmap = SingleLiteOrm.getSingleLiteOrm(this).SingleLite().query(LiteOrmMyBean.class).get(0).getImage();
+            headIv.setImageBitmap(bitmap);
+            Log.d("222", "**" + SingleLiteOrm.getSingleLiteOrm(this).SingleLite().query(LiteOrmMyBean.class).size());
+            nameTv.setText(SingleLiteOrm.getSingleLiteOrm(this).SingleLite().query(LiteOrmMyBean.class).get(0).getName());
+            headIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(MyActivity.this, SetupActivity.class);
+                    startActivity(intent);
+                }
+            });
+        } else {
+            headIv.setOnClickListener(this);
+            Log.d("xx", "11");
         }
     }
 
@@ -126,7 +164,10 @@ public class MyActivity extends SwipeBackActivity implements View.OnClickListene
 
         @Override
         public void onComplete(Object o) {
+            Intent intent = new Intent("com.xdx.dllo.beautygoodsdemo.into");
+            sendBroadcast(intent);
             dialog.dismiss();
+
             try {
                 openid = ((JSONObject) o).getString("openid");
                 Log.d("222222", openid);
@@ -160,6 +201,8 @@ public class MyActivity extends SwipeBackActivity implements View.OnClickListene
                             @Override
                             public void onSuccess(List<BombBean> list) {
                                 //把查出来的 放入本地数据库 登录时 吧网络数据放入本地
+                                Log.d("2222", "list.size():" + list.size());
+
                             }
 
                             @Override
@@ -205,6 +248,7 @@ public class MyActivity extends SwipeBackActivity implements View.OnClickListene
                             try {
                                 bitmap = Util.getbitmap(json.getString("figureurl_qq_2"));
                                 //把头像存入本地数据库
+                                Log.d("123", "bitmap:" + bitmap);
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -281,9 +325,10 @@ public class MyActivity extends SwipeBackActivity implements View.OnClickListene
                     try {
                         //用户名(qq名)
                         nicknameString = response.getString("nickname");
+                        nameTv.setText(nicknameString);
                         //把用户名存入本地数据库
-
-
+                        myBean.setName(nicknameString);
+                        SingleLiteOrm.getSingleLiteOrm(MyActivity.this).SingleLite().insert(myBean);
                     } catch (JSONException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -292,6 +337,9 @@ public class MyActivity extends SwipeBackActivity implements View.OnClickListene
             } else if (msg.what == 1) {
                 //用户头像
                 bitmap = (Bitmap) msg.obj;
+                headIv.setImageBitmap(bitmap);
+                myBean.setImage(bitmap);
+                SingleLiteOrm.getSingleLiteOrm(MyActivity.this).SingleLite().update(myBean);
 
 
             }
@@ -300,4 +348,9 @@ public class MyActivity extends SwipeBackActivity implements View.OnClickListene
 
     };
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(receiver);
+    }
 }
