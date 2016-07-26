@@ -3,16 +3,10 @@ package com.xdx.dllo.beautygoodsdemo.goods;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.xdx.dllo.beautygoodsdemo.R;
 import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
 import com.xdx.dllo.beautygoodsdemo.base.BaseFragment;
-import com.xdx.dllo.beautygoodsdemo.base.CommonAdapter;
-import com.xdx.dllo.beautygoodsdemo.base.ViewHolder;
-import com.xdx.dllo.beautygoodsdemo.internet.NetworkRequests;
-import com.xdx.dllo.beautygoodsdemo.stylist.StylistBean;
-import com.xdx.dllo.beautygoodsdemo.tools.UrlValues;
 
 /**
  * Created by dllo on 16/7/19.

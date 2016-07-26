@@ -25,13 +25,7 @@
             android:layout_margin="10dp"
             android:text="登录"
             android:textColor="#e7e4e4" />
-        <ImageView
-            android:id="@+id/aty_into_redact_iv"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@mipmap/bianji"
-            android:layout_alignParentRight="true"
-            android:layout_margin="5dp"/>
+
 
     </RelativeLayout>
 
