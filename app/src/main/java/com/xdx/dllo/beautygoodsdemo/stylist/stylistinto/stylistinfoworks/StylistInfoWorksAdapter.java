@@ -18,6 +18,11 @@ import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.StylistIntoBelowBean;
 public class StylistInfoWorksAdapter extends RecyclerView.Adapter<StylistInfoWorksAdapter.ViewHolder> {
     private StylistIntoBelowBean stylistIntoBelowBean;
     private Context context;
+    private StyListInfoWorksItemOnClickListener styListInfoWorksItemOnClickListener = null;
+
+    public void setStyListInfoWorksItemOnClickListener(StyListInfoWorksItemOnClickListener styListInfoWorksItemOnClickListener) {
+        this.styListInfoWorksItemOnClickListener = styListInfoWorksItemOnClickListener;
+    }
 
     public StylistInfoWorksAdapter(Context context) {
         this.context = context;
@@ -36,9 +41,18 @@ public class StylistInfoWorksAdapter extends RecyclerView.Adapter<StylistInfoWor
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
 
         Glide.with(context).load(stylistIntoBelowBean.getData().getProducts().get(position).getImages().get(0)).error(R.mipmap.icon_splash).into(holder.itemStylistInfoWorksIv);
+        holder.itemStylistInfoWorksIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (styListInfoWorksItemOnClickListener != null) {
+                    styListInfoWorksItemOnClickListener.onItemClick(view, position);
+                }
+
+            }
+        });
 
     }
 

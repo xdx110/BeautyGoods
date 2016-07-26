@@ -2,49 +2,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/aty_main_dlay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".main.MainActivity"
-    android:id="@+id/aty_main_dlay">
+    tools:context=".main.MainActivity">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/mainIvFeedBack"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#000000"
-            android:orientation="horizontal">
+            android:layout_marginLeft="5dp"
+            android:src="@mipmap/fankui" />
 
-            <ImageView
-                android:id="@+id/mainIvFeedBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="5dp"
-                android:src="@mipmap/fankui" />
-
-            <android.support.design.widget.TabLayout
-                android:id="@+id/aty_main_tab"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                app:tabSelectedTextColor="#ffffff"
-                app:tabTextColor="#ffffff" />
-
-            <ImageView
-                android:id="@+id/mainIvPerson"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="5dp"
-                android:src="@mipmap/icontt" />
-
-        </RelativeLayout>
-
+        <!--<android.support.design.widget.TabLayout-->
+        <!--android:id="@+id/aty_main_tab"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp"-->
+        <!--app:tabSelectedTextColor="#4af238"-->
+        <!--app:tabTextColor="#ffffff" />-->
+        <ImageView
+            android:id="@+id/mainIvPerson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/icontt" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/aty_main_vp"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <android.support.v4.view.PagerTabStrip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_toRightOf="@id/mainIvFeedBack"
+                android:background="#df5c5c" />
+        </android.support.v4.view.ViewPager>
+
+
+    </RelativeLayout>
+
 
 </LinearLayout>

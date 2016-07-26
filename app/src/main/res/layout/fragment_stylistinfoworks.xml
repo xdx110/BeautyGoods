@@ -4,23 +4,16 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/iiii">
-        <LinearLayout
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.stylistinfoworks.MyRecycler
+            android:id="@+id/stylistInfoWorksRecycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/stylistInfoWorksRecycler"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+            android:layout_height="match_parent" />
+</ScrollView>
 
-        </LinearLayout>
 
-    </ScrollView>
 
 
 

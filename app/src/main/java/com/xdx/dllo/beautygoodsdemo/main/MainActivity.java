@@ -37,7 +37,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void initView() {
-        tabLayout = (TabLayout) findViewById(R.id.aty_main_tab);
+//        tabLayout = (TabLayout) findViewById(R.id.aty_main_tab);
         viewPager = (ViewPager) findViewById(R.id.aty_main_vp);
         personIv = (ImageView) findViewById(R.id.mainIvPerson);
         personIv.setOnClickListener(this);
@@ -49,8 +49,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mainAdapter = new MainAdapter(getSupportFragmentManager());
         mainAdapter.setDatas(initFragment());
         viewPager.setAdapter(mainAdapter);
-        tabLayout.setupWithViewPager(viewPager);
-        tabLayout.setSelectedTabIndicatorHeight(0);
+//        tabLayout.setupWithViewPager(viewPager);
+//        tabLayout.setSelectedTabIndicatorHeight(0);
+
 
     }
 
@@ -79,7 +80,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.mainIvPerson:
-                Intent intent=new Intent(this,MyActivity.class);
+                Intent intent = new Intent(this, MyActivity.class);
                 startActivity(intent);
                 break;
         }

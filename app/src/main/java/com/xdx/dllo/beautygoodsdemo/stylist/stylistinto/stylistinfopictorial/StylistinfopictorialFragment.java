@@ -11,7 +11,7 @@ import com.xdx.dllo.beautygoodsdemo.base.BaseFragment;
  * Created by dllo on 16/7/23.
  */
 public class StylistinfopictorialFragment extends BaseFragment implements View.OnClickListener {
-    private ScrollView iii;
+
     @Override
     public int setLayout() {
         return R.layout.fragment_stylistinfopictorial;
@@ -19,12 +19,12 @@ public class StylistinfopictorialFragment extends BaseFragment implements View.O
 
     @Override
     public void initView(View view) {
-      iii = (ScrollView) view.findViewById(R.id.iii);
-    }
+
+}
 
     @Override
     public void initDate() {
-        iii.setOnClickListener(this);
+
 
     }
 

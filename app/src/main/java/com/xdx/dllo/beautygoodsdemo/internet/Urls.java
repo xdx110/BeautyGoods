@@ -19,4 +19,9 @@ public class Urls {
     public static final String GOODS_URL_END = "&device_id=863360020709857&platform=android&lang=zh&appVersion=1.0.5&appVersionCode=10005&systemVersion=23&countryCode=CN&user_id=8066&token=4ds-fedadc514db5f681beda&package_name=com.zuiapps.zuiworld";
     public static final String GOODS_INFORMATION_URL_HEAD = "http://design.zuimeia.com/api/v1/product/";
     public static final String GOODS_INFORMATION_URL_END = "/?device_id=863360020709857&platform=android&lang=zh&appVersion=1.0.5&appVersionCode=10005&systemVersion=23&countryCode=CN&user_id=8066&token=4ds-fedadc514db5f681beda&package_name=com.zuiapps.zuiworld";
+
+    //作品详情
+    public static final String WORKS_DETAILS_URL_HEAD = "http://design.zuimeia.com/api/v1/product/";
+    public static final String WORKS_DETAILS_URL_END = "/?device_id=863360020709857&platform=android&lang=zh&appVersion=1.0.5&appVersionCode=10005&systemVersion=23&countryCode=CN&user_id=8066&token=4ds-fedadc514db5f681beda&package_name=com.zuiapps.zuiworld";
+
 }

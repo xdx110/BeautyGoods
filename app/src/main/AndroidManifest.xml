@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xdx.dllo.beautygoodsdemo">
-<uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:name=".main.MyApp"
         android:allowBackup="true"
@@ -25,26 +27,30 @@
 
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="behind"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:configChanges="orientation|keyboardHidden">
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+
         </activity>
 
 
         <activity
             android:name="com.tencent.tauth.AuthActivity"
-            android:noHistory="true"
-            android:launchMode="singleTask" >
+            android:launchMode="singleTask"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="tencent1105558146" />
             </intent-filter>
         </activity>
-        <activity android:name=".stylist.stylistinto.StylistionIntoActivity"/>
-        <activity android:name=".into.MyActivity"/>
-        <activity android:name=".into.SetupActivity"/>
+        <activity android:name=".stylist.stylistinto.StylistionIntoActivity" />
+        <activity android:name=".into.MyActivity" />
+        <activity android:name=".into.SetupActivity" />
+        <activity android:name=".stylist.stylistinto.stylistinfoworks.worksdetails.WorksDetailsActivity" />
     </application>
 
 </manifest>

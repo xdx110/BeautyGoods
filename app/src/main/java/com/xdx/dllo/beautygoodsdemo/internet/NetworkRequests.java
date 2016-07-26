@@ -7,6 +7,7 @@ package com.xdx.dllo.beautygoodsdemo.internet;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -52,8 +53,8 @@ public class NetworkRequests {
     }
 
     //异步的get请求
-    private  <T> void getRequestAsync(String url, final Class<T> clazz, final OnTrue<T> onTrue, final OnError onError) {
-
+    private <T> void getRequestAsync(String url, final Class<T> clazz, final OnTrue<T> onTrue, final OnError onError) {
+        Log.d("Sysout",url);
         final Request request = new Request.Builder()
                 .url(url)
                 .build();
@@ -121,7 +122,7 @@ public class NetworkRequests {
      * @param onError
      * @param <T>
      */
-    public <T> void getDesignerBean(Class<T> t,   OnTrue<T> onTrue, OnError onError) {
+    public <T> void getDesignerBean(Class<T> t, OnTrue<T> onTrue, OnError onError) {
 
 
         getRequestAsync(Urls.DESIGNER_URL, t, onTrue, onError);
@@ -213,9 +214,20 @@ public class NetworkRequests {
      */
     public <T> void getGoodsInformationBean(String id, Class<T> t, OnTrue<T> onTrue, OnError onError) {
 
-
         getRequestAsync(Urls.GOODS_INFORMATION_URL_HEAD + id + Urls.GOODS_INFORMATION_URL_END, t, onTrue, onError);
 
     }
+
+    /**
+     * @param id      作品内部的Id
+     * @param t
+     * @param onTrue
+     * @param onError
+     * @param <T>
+     */
+    public <T> void getWorksDetailsBean(String id, Class<T> t, OnTrue<T> onTrue, OnError onError) {
+        getRequestAsync(Urls.WORKS_DETAILS_URL_HEAD + id + Urls.WORKS_DETAILS_URL_END, t, onTrue, onError);
+    }
+
 }
 

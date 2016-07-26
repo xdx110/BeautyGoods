@@ -17,14 +17,22 @@
 
             <RelativeLayout
                 android:id="@+id/heardTopLayout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/stylistInfoViewPagerHeard"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp" />
+                    android:layout_height="330dp" />
+
+                <ImageButton
+                    android:id="@+id/stylistInfoIbnBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:padding="10dp"
+                    android:src="@mipmap/ic_bottom_back_normal" />
 
 
                 <ImageView
@@ -42,7 +50,9 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/stylistInfoIcon"
                     android:layout_centerHorizontal="true"
-                    android:text="作者" />
+                    android:text="作者"
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/stylistInfoFounder"
@@ -58,6 +68,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/stylistInfoFounder"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
                     android:text="观念" />
 
                 <CheckBox
@@ -69,6 +81,28 @@
                     android:layout_margin="10dp"
                     android:background="@drawable/stylist_check_box"
                     android:button="@null" />
+
+                <TextView
+                    android:id="@+id/styKisInfoTvDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/stylistInfoAttention"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:maxLines="2"
+                    android:text="描述" />
+
+
+                <com.xdx.dllo.beautygoodsdemo.tools.MyCheckBox
+                    android:id="@+id/styKisInfoCheckBelow"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/styKisInfoTvDescription"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/top_below_check_box" />
+
+
             </RelativeLayout>
 
             <LinearLayout
@@ -89,7 +123,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="#000000"
+                        android:background="#2d2c2c"
                         android:button="@null"
                         android:gravity="center"
                         android:text="作品"
@@ -101,7 +135,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="#000000"
+                        android:background="#2d2c2c"
                         android:button="@null"
                         android:gravity="center"
                         android:text="画报"
@@ -128,5 +162,6 @@
         android:layout_width="match_parent"
         android:layout_height="22dp"
         android:orientation="horizontal" />
+
 
 </RelativeLayout>
