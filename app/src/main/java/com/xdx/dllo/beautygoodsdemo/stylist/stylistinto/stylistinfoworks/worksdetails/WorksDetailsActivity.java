@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +41,7 @@ public class WorksDetailsActivity extends BaseActivity implements BaseContract.V
     private TextView worksDetailsTvDesc;
     private ToolsListView worksDetailsListView;
     private ImageView worksDetailsIvBack;
+    private LinearLayout worksDetailsLinearLayout;
 
     private TextView worksDetailsTvTitle;
     private TextView worksDetailsTvSubTitle;
@@ -62,11 +64,13 @@ public class WorksDetailsActivity extends BaseActivity implements BaseContract.V
         worksDetailsTvWorksName = (TextView) findViewById(R.id.worksDetailsTvWorksName);
         worksDetailsTvDesc = (TextView) findViewById(R.id.worksDetailsTvDesc);
         worksDetailsListView = (ToolsListView) findViewById(R.id.worksDetailsListView);
+        worksDetailsLinearLayout = (LinearLayout) findViewById(R.id.worksDetailsLinearLayout);
+
 
         worksDetailsTvTitle = (TextView) findViewById(R.id.worksDetailsTvTitle);
         worksDetailsTvSubTitle = (TextView) findViewById(R.id.worksDetailsTvSubTitle);
         worksDetailsIvImage = (ImageView) findViewById(R.id.worksDetailsIvImage);
-        worksDetailsIvBack= (ImageView) findViewById(R.id.worksDetailsIvBack);
+        worksDetailsIvBack = (ImageView) findViewById(R.id.worksDetailsIvBack);
         worksDetailsIvBack.setOnClickListener(this);
 
     }
@@ -83,6 +87,7 @@ public class WorksDetailsActivity extends BaseActivity implements BaseContract.V
         //
         Intent intent = getIntent();
         String id = String.valueOf(intent.getIntExtra("WOEKSID", 12));
+        Log.d("idid", "id:" + id);
         //
         presenter.onOk(id);
         presenter.start();
@@ -108,11 +113,14 @@ public class WorksDetailsActivity extends BaseActivity implements BaseContract.V
         worksDetailsTvDesc.setText(data.getData().getDesc());
         worksDetailsBaseAdapter.setWorksDetailsBean(data);
         worksDetailsListView.setAdapter(worksDetailsBaseAdapter);
+        worksDetailsLinearLayout.setVisibility(View.GONE);
+        if (data.getData().getRefer_articles().size() != 0) {
+            worksDetailsTvTitle.setText(data.getData().getRefer_articles().get(0).getTitle());
+            worksDetailsTvSubTitle.setText(data.getData().getRefer_articles().get(0).getSub_title());
+            Glide.with(this).load(data.getData().getRefer_articles().get(0).getImage_url()).into(worksDetailsIvImage);
+            worksDetailsLinearLayout.setVisibility(View.VISIBLE);
+        }
 
-        worksDetailsTvTitle.setText(data.getData().getRefer_articles().get(0).getTitle());
-        worksDetailsTvSubTitle.setText(data.getData().getRefer_articles().get(0).getSub_title());
-        Glide.with(this).load(data.getData().getRefer_articles().get(0).getImage_url()).into(worksDetailsIvImage);
-        Log.d("7758521","OOO:"+data.getData().getRefer_articles().get(0).getImage_url());
 
     }
 
@@ -128,7 +136,7 @@ public class WorksDetailsActivity extends BaseActivity implements BaseContract.V
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.worksDetailsIvBack:
                 finish();
                 break;

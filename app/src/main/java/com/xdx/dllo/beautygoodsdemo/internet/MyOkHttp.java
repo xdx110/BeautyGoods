@@ -31,9 +31,7 @@ public class MyOkHttp {
         client = new OkHttpClient();
         gson = new Gson();
 
-
     }
-
 
     public static MyOkHttp getInstance() {
         if (myOkHttp == null) {
@@ -42,7 +40,6 @@ public class MyOkHttp {
                     myOkHttp = new MyOkHttp();
                 }
             }
-
         }
         return myOkHttp;
     }
@@ -97,7 +94,6 @@ public class MyOkHttp {
 
             }
 
-
         });
 
     }
@@ -109,6 +105,5 @@ public class MyOkHttp {
     public interface OnError {
         void noHasData();
     }
-
 
 }

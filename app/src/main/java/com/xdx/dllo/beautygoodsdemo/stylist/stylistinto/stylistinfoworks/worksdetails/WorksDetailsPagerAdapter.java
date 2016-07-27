@@ -18,6 +18,8 @@ import java.util.List;
 public class WorksDetailsPagerAdapter extends PagerAdapter {
     private List<ImageView> imageViews;
     private Context context;
+   // private ImageView image;
+    private List<String> urls;
 
     public WorksDetailsPagerAdapter(Context context) {
         this.context = context;
@@ -25,19 +27,32 @@ public class WorksDetailsPagerAdapter extends PagerAdapter {
 
     public void setImageViews(WorksDetailsBean worksDetailsBean) {
         imageViews = new ArrayList<>();
-        Log.d("Sysout",worksDetailsBean.toString());
-        for (int i = 0; i < worksDetailsBean.getData().getCover_images().size(); i++) {
+
+//        Log.d("Sysofffffff", "**" + worksDetailsBean.getData().getCover_images().size());
+        if (worksDetailsBean.getData().getCover_images().size() == 0) {
             ImageView image = new ImageView(context);
-            Glide.with(context).load(worksDetailsBean.getData().getCover_images().get(i)).into(image);
+            Glide.with(context).load(worksDetailsBean.getData().getImages().get(0)).into(image);
             imageViews.add(image);
+            notifyDataSetChanged();
+            Log.d("Sysout11", "" + worksDetailsBean.getData().getImages().get(0));
+
+
+        } else {
+            for (int i = 0; i < worksDetailsBean.getData().getCover_images().size(); i++) {
+                ImageView image = new ImageView(context);
+                Log.d("123456789", "110:" + worksDetailsBean.getData().getCover_images().get(i));
+                Glide.with(context).load(worksDetailsBean.getData().getCover_images().get(i)).into(image);
+                imageViews.add(image);
+            }
+            notifyDataSetChanged();
         }
-        notifyDataSetChanged();
+
     }
 
 
     @Override
     public int getCount() {
-        Log.d("Sysout",imageViews.size()+"");
+        Log.d("Sysout", imageViews.size() + "");
         return imageViews.size();
     }
 
@@ -73,4 +88,6 @@ public class WorksDetailsPagerAdapter extends PagerAdapter {
             container.removeViewAt(position % imageViews.size());
         }
     }
+
+
 }
