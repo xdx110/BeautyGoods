@@ -179,13 +179,13 @@ public class NetworkRequests {
     /**
      * 有物页面数据
      *
-     * @param time    获取当前时间转换成时间戳
+     * @param id    获取当前时间转换成时间戳
      * @param t
      * @param onTrue
      * @param onError
      * @param <T>
      */
-    public <T> void getGoodsBean(String time, Class<T> t, OnTrue<T> onTrue, OnError onError) {
+    public <T> void getGoodsBean(String id, Class<T> t, OnTrue<T> onTrue, OnError onError) {
 
 
         //当前时间转换成时间戳
@@ -199,7 +199,7 @@ public class NetworkRequests {
 //        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("MM-dd");
 //        holder.time.setText(simpleDateFormat.format(gregorianCalendar.getTime()));
 
-        getRequestAsync(Urls.GOODS_URL_HEAD + time + Urls.GOODS_URL_END, t, onTrue, onError);
+        getRequestAsync(Urls.GOODS_URL_HEAD + id + Urls.GOODS_URL_END, t, onTrue, onError);
 
     }
 

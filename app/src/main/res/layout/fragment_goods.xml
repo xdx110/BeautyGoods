@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ListView
+    <com.xdx.dllo.beautygoodsdemo.goods.MyListView
         android:divider="#ffffff"
         android:id="@+id/goods_list_view"
         android:layout_width="match_parent"

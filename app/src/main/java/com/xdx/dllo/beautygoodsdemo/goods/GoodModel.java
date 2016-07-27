@@ -22,7 +22,7 @@ public class GoodModel implements BaseContract.Model {
             @Override
             public void hasData(GoodsBean data) {
 
-                Log.d("aa",data.getData().getActivities().size()+"");
+
                 presenter.setData(data);
 
             }

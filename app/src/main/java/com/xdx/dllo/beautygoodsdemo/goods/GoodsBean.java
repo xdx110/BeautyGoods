@@ -1,5 +1,7 @@
 package com.xdx.dllo.beautygoodsdemo.goods;
 
+import com.xdx.dllo.beautygoodsdemo.R;
+
 import java.util.List;
 
 /**
@@ -45,7 +47,7 @@ public class GoodsBean {
          * publish_at : 1468857600000
          * id : 80
          * digest : Mansur Gavriel | 斜挎马鞍包
-         粉嫩蔷薇色，浪漫少女心
+         * 粉嫩蔷薇色，浪漫少女心
          */
 
         private List<ActivitiesBean> activities;
@@ -192,6 +194,33 @@ public class GoodsBean {
                 private String avatar_url;
                 private int id;
                 private String name;
+                private boolean isChecked = false;
+               private int disLikeBackGround= R.drawable.goods_item_white_back_ground;
+                private int likeBackGround= R.drawable.goods_item_white_back_ground;
+
+                public int getDisLikeBackGround() {
+                    return disLikeBackGround;
+                }
+
+                public void setDisLikeBackGround(int disLikeBackGround) {
+                    this.disLikeBackGround = disLikeBackGround;
+                }
+
+                public int getLikeBackGround() {
+                    return likeBackGround;
+                }
+
+                public void setLikeBackGround(int likeBackGround) {
+                    this.likeBackGround = likeBackGround;
+                }
+
+                public boolean isChecked() {
+                    return isChecked;
+                }
+
+                public void setChecked(boolean checked) {
+                    isChecked = checked;
+                }
 
                 public String getConcept() {
                     return concept;
