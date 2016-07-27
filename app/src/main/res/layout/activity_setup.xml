@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="更改头像" />
+            android:text="个人头像" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -50,16 +50,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="昵称" />
+            android:text="个人昵称" />
 
-        <EditText
+        <TextView
             android:id="@+id/aty_setup_name_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="5dp"
-            android:background="@null"
-            android:hint="设置昵称" />
+            android:background="@null" />
 
     </LinearLayout>
 

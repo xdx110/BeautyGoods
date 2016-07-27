@@ -6,11 +6,12 @@ import com.xdx.dllo.beautygoodsdemo.liteorm.LiteOrmMyBean;
 import java.util.List;
 
 import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.BmobUser;
 
 /**
  * Created by dllo on 16/7/23.
  */
-public class BombBean extends BmobObject {
+public class BombBean extends BmobUser {
     private String userName;
     private List<LiteOrmCollectBean> data;
     private LiteOrmMyBean liteOrmMyBean;

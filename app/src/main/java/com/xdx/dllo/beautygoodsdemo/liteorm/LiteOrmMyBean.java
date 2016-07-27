@@ -16,15 +16,6 @@ public class LiteOrmMyBean {
     private int id;
     private String name;
     private byte[] photo;
-    private Bitmap bitmap;
-
-    public Bitmap getBitmap() {
-        return bitmap;
-    }
-
-    public void setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap;
-    }
 
     public Bitmap getImage() {
         if (photo == null) {
