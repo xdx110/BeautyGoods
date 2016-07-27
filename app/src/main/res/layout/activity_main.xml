@@ -8,47 +8,56 @@
     android:orientation="vertical"
     tools:context=".main.MainActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/mainIvFeedBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:src="@mipmap/fankui" />
 
-        <!--<android.support.design.widget.TabLayout-->
-        <!--android:id="@+id/aty_main_tab"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="40dp"-->
-        <!--app:tabSelectedTextColor="#4af238"-->
-        <!--app:tabTextColor="#ffffff" />-->
-        <ImageView
-            android:id="@+id/mainIvPerson"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"
-            android:src="@mipmap/icontt" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/aty_main_tab"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#000000"
+                app:tabSelectedTextColor="#4af238"
+                app:tabTextColor="#ffffff" />
+
+            <ImageView
+                android:id="@+id/mainIvPerson"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="5dp"
+                android:layout_marginRight="5dp"
+                android:src="@mipmap/icontt" />
+
+            <ImageView
+                android:id="@+id/mainIvFeedBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:src="@mipmap/fankui" />
+        </RelativeLayout>
 
         <android.support.v4.view.ViewPager
             android:id="@+id/aty_main_vp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-            <android.support.v4.view.PagerTabStrip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:layout_toRightOf="@id/mainIvFeedBack"
-                android:background="#df5c5c" />
+            <!--<android.support.v4.view.PagerTabStrip-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="top"-->
+            <!--android:layout_toRightOf="@id/mainIvFeedBack"-->
+            <!--android:background="#df5c5c" />-->
         </android.support.v4.view.ViewPager>
 
 
-    </RelativeLayout>
+
 
 
 </LinearLayout>
