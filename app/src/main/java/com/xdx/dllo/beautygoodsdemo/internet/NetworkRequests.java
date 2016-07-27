@@ -54,7 +54,7 @@ public class NetworkRequests {
 
     //异步的get请求
     private <T> void getRequestAsync(String url, final Class<T> clazz, final OnTrue<T> onTrue, final OnError onError) {
-        Log.d("Sysout",url);
+
         final Request request = new Request.Builder()
                 .url(url)
                 .build();

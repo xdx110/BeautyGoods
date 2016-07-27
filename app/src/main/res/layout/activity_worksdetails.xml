@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -21,7 +22,7 @@
                 <android.support.v4.view.ViewPager
                     android:id="@+id/worksDetailsViewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="240dp" />
+                    android:layout_height="330dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -34,6 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:padding="10dp"
                     android:text="摘要" />
 
                 <ImageView
@@ -48,7 +50,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="作者" />
+                    android:text="作者"
+                    android:textColor="#000000" />
 
                 <TextView
                     android:id="@+id/worksDetailsTvLabel"
@@ -62,6 +65,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:text="构思设计" />
 
                 <TextView
@@ -76,6 +81,7 @@
                     android:layout_marginTop="10dp"
                     android:padding="10dp"
                     android:text="作品名称"
+                    android:textColor="#000000"
                     android:textSize="15sp" />
 
                 <TextView
@@ -83,14 +89,17 @@
                     android:id="@+id/worksDetailsTvDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:text="产品描述" />
 
                 <com.xdx.dllo.beautygoodsdemo.tools.ToolsListView
                     android:id="@+id/worksDetailsListView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:divider="@null" />
 
                 <LinearLayout
+                    android:id="@+id/worksDetailsLinearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#000000"
@@ -104,50 +113,61 @@
                         android:textColor="#ffffff"
                         android:textSize="10sp" />
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
+                    <android.support.v7.widget.CardView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:background="#ffffff">
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="50dp">
 
-                        <ImageView
-                            android:id="@+id/worksDetailsIvImage"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_alignParentRight="true"
-
-                            android:src="@mipmap/ic_launcher"
-                            android:padding="10dp"/>
-
-                        <TextView
-                            android:id="@+id/worksDetailsTvTitle"
-                            android:layout_width="wrap_content"
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="标题"
-                            android:layout_marginRight="100dp"
-                            android:textColor="#000000"
-                            android:textSize="13dp"
-                            android:layout_alignTop="@id/worksDetailsIvImage"
-                            android:padding="10dp"/>
 
-                        <TextView
-                            android:id="@+id/worksDetailsTvSubTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@id/worksDetailsIvImage"
-                            android:text="下标题"
-                            android:padding="10dp"
-                            android:layout_marginRight="100dp"/>
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="#ffffff">
+
+                            <ImageView
+                                android:id="@+id/worksDetailsIvImage"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_alignParentRight="true"
+                                android:padding="10dp"
+                                android:src="@mipmap/ic_launcher" />
+
+                            <TextView
+                                android:id="@+id/worksDetailsTvTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@id/worksDetailsIvImage"
+                                android:layout_marginRight="100dp"
+                                android:padding="10dp"
+                                android:text="标题"
+                                android:textColor="#000000"
+                                android:textSize="13dp" />
+
+                            <TextView
+                                android:id="@+id/worksDetailsTvSubTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@id/worksDetailsIvImage"
+                                android:layout_marginRight="100dp"
+                                android:padding="10dp"
+                                android:text="下标题" />
+
+                        </RelativeLayout>
 
 
-                    </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
 
-                        android:background="#000000" />
+                        />
 
                 </LinearLayout>
 
