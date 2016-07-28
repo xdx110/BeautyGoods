@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class StyKisIntoFragment extends BaseFragment implements BaseContract.Vie
     private TextView styKisInfoTvDescription;
     private CheckBox styKisInfoCheckBelow;
     private ImageButton stylistInfoIbnBack;
+    private ViewPager stylistInfoViewPagerHeard;
 
 
     //RdionButton
@@ -88,7 +90,7 @@ public class StyKisIntoFragment extends BaseFragment implements BaseContract.Vie
         styKisInfoTvDescription = (TextView) view.findViewById(R.id.styKisInfoTvDescription);
         styKisInfoCheckBelow = (CheckBox) view.findViewById(R.id.styKisInfoCheckBelow);
         stylistInfoIbnBack = (ImageButton) view.findViewById(R.id.stylistInfoIbnBack);
-
+        stylistInfoViewPagerHeard = (ViewPager) view.findViewById(R.id.stylistInfoViewPagerHeard);
         //
         stykisInfoScrollView = (MyScrollView) view.findViewById(R.id.stykisInfoScrollView);
         heardTopLayout = (RelativeLayout) view.findViewById(R.id.heardTopLayout);
@@ -181,6 +183,10 @@ public class StyKisIntoFragment extends BaseFragment implements BaseContract.Vie
 
         styKisInfoTvDescription.setText(data.getData().getDescription());
         styKisInfoCheckBelow.setEnabled(true);
+        StyListInfoViewPagerAdapter styListInfoViewPagerAdapter = new StyListInfoViewPagerAdapter(context);
+        styListInfoViewPagerAdapter.setImageViews(data);
+        stylistInfoViewPagerHeard.setAdapter(styListInfoViewPagerAdapter);
+
 
     }
 

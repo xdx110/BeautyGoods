@@ -8,6 +8,8 @@ import android.widget.ListView;
 import com.xdx.dllo.beautygoodsdemo.R;
 import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
 import com.xdx.dllo.beautygoodsdemo.base.BaseFragment;
+import com.xdx.dllo.beautygoodsdemo.internet.NetworkRequests;
+import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.stylistinfoworks.worksdetails.WorksDetailsActivity;
 
 /**
  * Created by dllo on 16/7/19.
