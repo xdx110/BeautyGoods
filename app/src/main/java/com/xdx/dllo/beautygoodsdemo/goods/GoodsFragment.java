@@ -30,6 +30,7 @@ public class GoodsFragment extends BaseFragment implements BaseContract.View<Goo
     public void initView(View view) {
         goodListView = (MyListView) view.findViewById(R.id.goods_list_view);
         adapter = new GoodsAdapter(context);
+        presenter.onOk(Timer.getTime(0));
         presenter.start();
         presenter.onOk(Timer.getTime(0));
 

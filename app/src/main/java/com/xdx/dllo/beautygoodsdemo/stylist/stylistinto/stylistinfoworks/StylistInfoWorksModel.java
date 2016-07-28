@@ -15,7 +15,7 @@ import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.stylistinfoworks.worksde
  */
 public class StylistInfoWorksModel implements BaseContract.Model {
     private BaseContract.Presenter presenter;
-    private StylistInfoWorksAdapter stylistInfoWorksAdapter;
+
 
 
 

@@ -179,7 +179,7 @@ public class NetworkRequests {
     /**
      * 有物页面数据
      *
-     * @param id    获取当前时间转换成时间戳
+     * @param id      获取当前时间转换成时间戳
      * @param t
      * @param onTrue
      * @param onError
@@ -227,6 +227,19 @@ public class NetworkRequests {
      */
     public <T> void getWorksDetailsBean(String id, Class<T> t, OnTrue<T> onTrue, OnError onError) {
         getRequestAsync(Urls.WORKS_DETAILS_URL_HEAD + id + Urls.WORKS_DETAILS_URL_END, t, onTrue, onError);
+    }
+
+    /**
+     * 画报测试url
+     *
+     * @param id
+     * @param t
+     * @param onTrue
+     * @param onError
+     * @param <T>
+     */
+    public <T> void getPictorialDetails(String id, Class<T> t, OnTrue<T> onTrue, OnError onError) {
+        getRequestAsync(Urls.PICTORIAL_DETAILS, t, onTrue, onError);
     }
 
 }
