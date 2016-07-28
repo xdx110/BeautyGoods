@@ -13,16 +13,12 @@ import com.xdx.dllo.beautygoodsdemo.stylist.StylistBean;
 public class GoodModel implements BaseContract.Model {
     private BaseContract.Presenter presenter;
 
-
-
-
     @Override
     public void onOk(String id) {
         NetworkRequests.getInstance().getGoodsBean(id, GoodsBean.class, new NetworkRequests.OnTrue<GoodsBean>() {
             @Override
             public void hasData(GoodsBean data) {
-
-
+                Log.d("GoodModel", "data:" + data);
                 presenter.setData(data);
 
             }

@@ -25,6 +25,12 @@ public class StylistAdapter extends BaseAdapter {
     private Context context;
     private StylistBean stylistBean;
     private ViewHolder holder = null;
+    private Checked checked;
+    private Bitmap bitmap;
+
+    public void setChecked(Checked checked) {
+        this.checked = checked;
+    }
 
     public StylistAdapter(Context context) {
         this.context = context;
@@ -68,6 +74,7 @@ public class StylistAdapter extends BaseAdapter {
                     holder.authorImage.setImageDrawable(new RoundDrawable(BitmapFactory.decodeResource(context.getResources(), R.mipmap.icon_splash)));
                 }
                 holder.authorImage.setImageDrawable(new RoundDrawable(resource));
+                bitmap=resource;
             }
         });
         holder.authorName.setText(stylistBean.getData().getDesigners().get(position).getName());
@@ -79,10 +86,14 @@ public class StylistAdapter extends BaseAdapter {
                 CheckBox checkBox = (CheckBox) view;
                 //把改变之后的状态加载都数据中
                 stylistBean.getData().getDesigners().get(position).setChecked(checkBox.isChecked());
+
+                checked.isCecked(position, checkBox.isChecked(),bitmap);
+
             }
         });
         return convertView;
     }
+
 
     class ViewHolder {
         ImageView headImage;

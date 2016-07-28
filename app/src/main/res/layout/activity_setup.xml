@@ -22,6 +22,7 @@
             android:text="个人头像" />
 
         <ImageView
+            android:id="@+id/aty_setup_head_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -53,7 +54,7 @@
             android:text="个人昵称" />
 
         <TextView
-            android:id="@+id/aty_setup_name_et"
+            android:id="@+id/aty_setup_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -116,6 +117,7 @@
             android:text="绑定手机" />
 
         <TextView
+            android:id="@+id/aty_setup_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

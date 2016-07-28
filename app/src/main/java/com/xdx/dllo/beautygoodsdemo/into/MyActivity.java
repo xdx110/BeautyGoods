@@ -63,7 +63,6 @@ public class MyActivity extends SwipeBackActivity implements View.OnClickListene
     private Bitmap bitmap;
     private String nicknameString;
     private LiteOrmMyBean myBean;
-    private MyActivityReceiver receiver;
     private TextView nameTv;
     private BmobUser bmobUser;
 
@@ -72,10 +71,6 @@ public class MyActivity extends SwipeBackActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_into);
 
-        receiver = new MyActivityReceiver();
-        IntentFilter filter = new IntentFilter();
-        filter.addAction("com.xdx.dllo.beautygoodsdemo.into");
-        registerReceiver(receiver, filter);
 
         nameTv = (TextView) findViewById(R.id.aty_into_tv);
         myBean = new LiteOrmMyBean();
@@ -90,15 +85,6 @@ public class MyActivity extends SwipeBackActivity implements View.OnClickListene
 
     }
 
-    private class MyActivityReceiver extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            Log.d("xx", "接到了");
-            initInto();
-
-        }
-    }
 
     @Override
     public void onClick(View view) {
@@ -122,6 +108,7 @@ public class MyActivity extends SwipeBackActivity implements View.OnClickListene
                 public void onClick(View view) {
                     Intent intent = new Intent(MyActivity.this, SetupActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             });
         } else {
@@ -348,9 +335,4 @@ public class MyActivity extends SwipeBackActivity implements View.OnClickListene
 
     };
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(receiver);
-    }
 }

@@ -24,6 +24,8 @@ public class GoodsPresenter implements BaseContract.Presenter<GoodsBean> {
 
     @Override
     public void setData(GoodsBean data) {
+        Log.d("GoodsPresenter", "000000000");
+        Log.d("GoodsPresenter", "data:" + data);
         view.getData(data);
     }
 

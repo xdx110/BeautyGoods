@@ -5,7 +5,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.content.pm.PackageInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.AnimationDrawable;
@@ -24,7 +23,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.xdx.dllo.beautygoodsdemo.R;
-import com.xdx.dllo.beautygoodsdemo.main.MyApp;
+
 import com.xdx.dllo.beautygoodsdemo.tools.RoundDrawable;
 import com.xdx.dllo.beautygoodsdemo.tools.Utils;
 
@@ -75,7 +74,7 @@ public class GoodsAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        Glide.with(context).load(goodsBean.getData().getActivities().get(i).getImages().get(0)).override(Utils.getScreenWidth(context), Utils.getScreenWidth(context)).error(R.mipmap.icon_splash).into(holder.headImage);
+        Glide.with(context).load(goodsBean.getData().getActivities().get(i).getImages().get(0)).override(Utils.getScreenWidth(context), Utils.getScreenWidth(context)).placeholder(R.mipmap.icon_splash).error(R.mipmap.icon_splash).into(holder.headImage);
         holder.headText.setText(goodsBean.getData().getActivities().get(i).getDigest());
         Glide.with(context).load(goodsBean.getData().getActivities().get(i).getDesigner().getAvatar_url()).asBitmap().into(new SimpleTarget<Bitmap>() {
             @Override

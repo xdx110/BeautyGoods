@@ -8,6 +8,8 @@ import android.widget.ListView;
 import com.xdx.dllo.beautygoodsdemo.R;
 import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
 import com.xdx.dllo.beautygoodsdemo.base.BaseFragment;
+import com.xdx.dllo.beautygoodsdemo.internet.NetworkRequests;
+import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.stylistinfoworks.worksdetails.WorksDetailsActivity;
 
 /**
  * Created by dllo on 16/7/19.
@@ -29,17 +31,21 @@ public class GoodsFragment extends BaseFragment implements BaseContract.View<Goo
         goodListView = (MyListView) view.findViewById(R.id.goods_list_view);
         adapter = new GoodsAdapter(context);
         presenter.start();
+        presenter.onOk(Timer.getTime(0));
 
     }
 
     @Override
     public void initDate() {
+        Log.d("GoodsFragment", "12313111131");
+
         goodListView.setRefreshListener(new MyListView.RefreshListener() {
             @Override
             public void onDownPullRefresh() {
                 NetworkRequests.getInstance().getGoodsBean(Timer.getTime(0), GoodsBean.class, new NetworkRequests.OnTrue<GoodsBean>() {
                     @Override
                     public void hasData(GoodsBean data) {
+                        Log.d("GoodsFragment", "data:" + data.getData().getActivities().size());
                         adapter.setGoodsBean(data);
                         goodListView.DownPullRefreshComplete();
                     }
@@ -75,6 +81,8 @@ public class GoodsFragment extends BaseFragment implements BaseContract.View<Goo
 
     @Override
     public void getData(final GoodsBean data) {
+        Log.d("qq", "********");
+        Log.d("00", "data:" + data);
         adapter.setGoodsBean(data);
         goodListView.setAdapter(adapter);
         goodListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

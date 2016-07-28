@@ -25,6 +25,7 @@ public class StylistPresenter implements BaseContract.Presenter<StylistBean> {
 
     @Override
     public void setData(StylistBean data) {
+        Log.d("StylistPresenter", "data:" + data);
         view.getData(data);
     }
 
