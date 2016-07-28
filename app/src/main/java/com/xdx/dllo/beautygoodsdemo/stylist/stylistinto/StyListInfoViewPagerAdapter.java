@@ -2,9 +2,12 @@ package com.xdx.dllo.beautygoodsdemo.stylist.stylistinto;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +23,15 @@ public class StyListInfoViewPagerAdapter extends PagerAdapter {
         this.context = context;
     }
 
-    public void setImageViews(List<ImageView> imageViews) {
-        this.imageViews = imageViews;
+
+    public void setImageViews(StylistIntoTopBean stylistIntoTopBean) {
+        imageViews = new ArrayList<>();
+        for (int i = 0; i < stylistIntoTopBean.getData().getIntroduce_images().size(); i++) {
+            ImageView imageView = new ImageView(context);
+            Glide.with(context).load(stylistIntoTopBean.getData().getIntroduce_images().get(i)).into(imageView);
+            imageViews.add(imageView);
+        }
+        notifyDataSetChanged();
 
     }
 
