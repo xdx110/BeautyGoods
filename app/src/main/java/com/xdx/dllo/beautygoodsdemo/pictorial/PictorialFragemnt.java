@@ -17,6 +17,9 @@ public class PictorialFragemnt extends BaseFragment{
     @Override
     public void initView(View view) {
 
+
+
+
     }
 
     @Override
