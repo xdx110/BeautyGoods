@@ -1,17 +1,37 @@
 package com.xdx.dllo.beautygoodsdemo.pictorial.pictorialdetails;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.xdx.dllo.beautygoodsdemo.R;
 import com.xdx.dllo.beautygoodsdemo.base.BaseActivity;
 import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
+import com.xdx.dllo.beautygoodsdemo.tools.RoundDrawable;
+
 
 /**
  * Created by dllo on 16/7/28.
  */
-public class PictorialDetailsActivity extends BaseActivity implements BaseContract.View<PictorialDetailsBean> {
+public class PictorialDetailsActivity extends BaseActivity implements BaseContract.View<PictorialDetailsBean>, View.OnClickListener {
     private BaseContract.Presenter presenter;
+    private TextView pictorialDetailsTvTitle;
+    private TextView pictorialDetailsTvSubTitle;
+    private ImageView pictorialDetailsIvImage;
+    private HtmlTextView htmlTextView;
+    private ImageView pictorialDetailsIvBack;
+    private TextView pictorialDetailsTvName;
+    private TextView pictorialDetailsTvLabel;
+    private ImageView pictorialDetailsIvAvatar;
 
 
     @Override
@@ -21,7 +41,14 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
 
     @Override
     public void initView() {
-
+        pictorialDetailsTvTitle = (TextView) findViewById(R.id.pictorialDetailsTvTitle);
+        pictorialDetailsTvSubTitle = (TextView) findViewById(R.id.pictorialDetailsTvSubTitle);
+        pictorialDetailsIvImage = (ImageView) findViewById(R.id.pictorialDetailsIvImage);
+        htmlTextView = (HtmlTextView) findViewById(R.id.htmlTextView);
+        pictorialDetailsIvBack = (ImageView) findViewById(R.id.pictorialDetailsIvBack);
+        pictorialDetailsTvName = (TextView) findViewById(R.id.pictorialDetailsTvName);
+        pictorialDetailsTvLabel = (TextView) findViewById(R.id.pictorialDetailsTvLabel);
+        pictorialDetailsIvAvatar= (ImageView) findViewById(R.id.pictorialDetailsIvAvatar);
 
 
     }
@@ -33,21 +60,29 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
         this.setPresenter(pictorialDetailsPresenter);
         presenter.onOk("");
         presenter.start();
+        pictorialDetailsIvBack.setOnClickListener(this);
 
 
     }
 
     @Override
     public void getData(PictorialDetailsBean data) {
+        Intent intent = getIntent();
+        int id = intent.getIntExtra("pos", 12);
+        String content = data.getData().getArticles().get(id).getContent();
+        htmlTextView.setHtmlFromString(content, false);
+        pictorialDetailsTvTitle.setText(data.getData().getArticles().get(id).getTitle());
+        pictorialDetailsTvSubTitle.setText(data.getData().getArticles().get(id).getSub_title());
+        Glide.with(this).load(data.getData().getArticles().get(id).getImage_url()).override(1000, 3000).into(pictorialDetailsIvImage);
+        pictorialDetailsTvName.setText(data.getData().getArticles().get(id).getDesigners().get(0).getName());
+        pictorialDetailsTvLabel.setText(data.getData().getArticles().get(id).getDesigners().get(0).getLabel());
+        Glide.with(this).load(data.getData().getArticles().get(id).getDesigners().get(0).getAvatar_url()).asBitmap().into(new SimpleTarget<Bitmap>(){
 
-        String content = data.getData().getArticles().get(0).getContent();
-
-        HtmlTextView htmlTextView = (HtmlTextView) findViewById(R.id.htmlTextView);
-        htmlTextView.setHtmlFromString(content,false);
-
-
-
-
+            @Override
+            public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                pictorialDetailsIvAvatar.setImageDrawable(new RoundDrawable(resource));
+            }
+        });
 
     }
 
@@ -60,5 +95,14 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
     public void setPresenter(BaseContract.Presenter presenter) {
         this.presenter = presenter;
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.pictorialDetailsIvBack:
+                finish();
+                break;
+        }
     }
 }

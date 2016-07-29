@@ -12,8 +12,7 @@ import java.io.InputStream;
  * Created by dllo on 16/7/28.
  */
 public class HtmlTextView extends TextView {
-    public static final String TAG = "HtmlTextView";
-    public static final boolean DEBUG = false;
+
 
     public HtmlTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);

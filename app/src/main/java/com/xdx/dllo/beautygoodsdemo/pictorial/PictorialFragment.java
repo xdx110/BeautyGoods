@@ -1,5 +1,6 @@
 package com.xdx.dllo.beautygoodsdemo.pictorial;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.appeaser.deckview.views.DeckChildView;
 import com.appeaser.deckview.views.DeckView;
@@ -16,6 +18,7 @@ import com.squareup.picasso.Target;
 import com.xdx.dllo.beautygoodsdemo.R;
 import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
 import com.xdx.dllo.beautygoodsdemo.base.BaseFragment;
+import com.xdx.dllo.beautygoodsdemo.pictorial.pictorialdetails.PictorialDetailsActivity;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -57,7 +60,7 @@ public class PictorialFragment extends BaseFragment implements BaseContract.View
     @Override
     public void getData(PictorialBean data) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable("PictorialBean", data);
+        bundle.putSerializable("PictorialBean",data);
         Log.d("PictorialFragment", "data:" + data);
         mDefaultThumbnail = BitmapFactory.decodeResource(getResources(), R.mipmap.icon_splash);
         if (mEntries == null) {
@@ -97,6 +100,9 @@ public class PictorialFragment extends BaseFragment implements BaseContract.View
 
             @Override
             public void onItemClick(Datum item) {
+                Intent intent = new Intent(getActivity(),PictorialDetailsActivity.class);
+                intent.putExtra("pos",item.getId()-1);
+                startActivity(intent);
 
             }
 

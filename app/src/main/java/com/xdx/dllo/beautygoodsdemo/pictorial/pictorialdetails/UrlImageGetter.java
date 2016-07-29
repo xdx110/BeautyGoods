@@ -2,6 +2,7 @@ package com.xdx.dllo.beautygoodsdemo.pictorial.pictorialdetails;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.text.Html;
 import android.util.Log;
@@ -38,9 +39,19 @@ public class UrlImageGetter implements Html.ImageGetter {
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                 if (resource != null) {
                     urlDrawable.bitmap = resource;
-                    urlDrawable.setBounds(0,0,resource.getWidth(),resource.getHeight());//防止图片文字重叠
+                    float scaleWidth = ((float) width) / resource.getWidth();
+
+                    // ???????matrix??
+                    Matrix matrix = new Matrix();
+                    matrix.postScale(scaleWidth, scaleWidth);
+                    resource = Bitmap.createBitmap(resource, 0, 0,
+                            resource.getWidth(), resource.getHeight(),
+                            matrix, true);
+                    urlDrawable.bitmap = resource;
+                    urlDrawable.setBounds(0, 0, resource.getWidth(),
+                            resource.getHeight());
                     container.invalidate();
-                    container.setText(container.getText());
+                    container.setText(container.getText()); // ??????
                 } else {
                     Log.d("Sysout", "null");
                 }
