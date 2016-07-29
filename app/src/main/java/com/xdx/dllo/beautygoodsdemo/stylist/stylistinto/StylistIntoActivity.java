@@ -15,7 +15,7 @@ import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.stylistinfoworks.Stylist
 /**
  * Created by dllo on 16/7/20.
  */
-public class StylistionIntoActivity extends BaseActivity {
+public class StylistIntoActivity extends BaseActivity {
     private MyReceiver myReceiver;
 
     @Override
