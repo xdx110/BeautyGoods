@@ -14,7 +14,9 @@ import com.xdx.dllo.beautygoodsdemo.goods.GoodModel;
 import com.xdx.dllo.beautygoodsdemo.goods.GoodsFragment;
 import com.xdx.dllo.beautygoodsdemo.goods.GoodsPresenter;
 import com.xdx.dllo.beautygoodsdemo.into.MyActivity;
-import com.xdx.dllo.beautygoodsdemo.pictorial.PictorialFragemnt;
+import com.xdx.dllo.beautygoodsdemo.pictorial.PictorialFragment;
+import com.xdx.dllo.beautygoodsdemo.pictorial.PictorialModel;
+import com.xdx.dllo.beautygoodsdemo.pictorial.PictorialPresenter;
 import com.xdx.dllo.beautygoodsdemo.stylist.StylistFragment;
 import com.xdx.dllo.beautygoodsdemo.stylist.StylistModel;
 import com.xdx.dllo.beautygoodsdemo.stylist.StylistPresenter;
@@ -59,16 +61,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         //
         StylistFragment stylistFragment = new StylistFragment();
         BaseContract.Model model = new StylistModel();
-        BaseContract.Presenter presenter = new StylistPresenter(model, stylistFragment);
-        stylistFragment.setPresenter(presenter);
+        BaseContract.Presenter stylistPresenter = new StylistPresenter(model, stylistFragment);
+        stylistFragment.setPresenter(stylistPresenter);
         //
         GoodsFragment goodsFragment = new GoodsFragment();
         BaseContract.Model goodsModel = new GoodModel();
         BaseContract.Presenter goodsPresenter = new GoodsPresenter(goodsModel, goodsFragment);
         goodsFragment.setPresenter(goodsPresenter);
+        //
+        PictorialFragment pictorialFragment = new PictorialFragment();
+        BaseContract.Model pictorialModel = new PictorialModel();
+        BaseContract.Presenter pictorialPresenter = new PictorialPresenter(pictorialModel, pictorialFragment);
+        pictorialFragment.setPresenter(pictorialPresenter);
 
         datas = new ArrayList<>();
-        datas.add(new PictorialFragemnt());
+        datas.add(pictorialFragment);
         datas.add(goodsFragment);
         datas.add(stylistFragment);
 

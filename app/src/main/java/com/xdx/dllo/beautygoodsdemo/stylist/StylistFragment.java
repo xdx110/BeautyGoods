@@ -5,12 +5,10 @@ import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
 
 
-import com.litesuits.orm.db.assit.WhereBuilder;
 import com.xdx.dllo.beautygoodsdemo.R;
 import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
 import com.xdx.dllo.beautygoodsdemo.base.BaseFragment;
@@ -18,13 +16,12 @@ import com.xdx.dllo.beautygoodsdemo.internet.NetworkRequests;
 import com.xdx.dllo.beautygoodsdemo.into.BombBean;
 import com.xdx.dllo.beautygoodsdemo.liteorm.LiteOrmCollectBean;
 import com.xdx.dllo.beautygoodsdemo.liteorm.SingleLiteOrm;
-import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.StylistionIntoActivity;
+import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.StylistIntoActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
 /**
@@ -109,7 +106,7 @@ public class StylistFragment extends BaseFragment implements BaseContract.View<S
         stylistListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                startActivity(new Intent(getActivity(), StylistionIntoActivity.class).putExtra("id",
+                startActivity(new Intent(getActivity(), StylistIntoActivity.class).putExtra("id",
                         data.getData().getDesigners().get(i).getId()));
 
             }
