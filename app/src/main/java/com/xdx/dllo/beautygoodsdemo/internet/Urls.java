@@ -27,4 +27,5 @@ public class Urls {
 
     //画报详情测试URL
     public static final String PICTORIAL_DETAILS = "http://design.zuimeia.com/api/v1/articles/daily/?page=1&page_size=30&user_id=0&device_id=863360020709857&platform=android&lang=zh&appVersion=1.0.4&appVersionCode=10004&systemVersion=23&countryCode=CN&user_id=0&token=&package_name=com.zuiapps.zuiworld";
+
 }

@@ -230,17 +230,18 @@ public class NetworkRequests {
     }
 
     /**
-     * 画报测试url
+     * 画报
      *
-     * @param id
+     *
      * @param t
      * @param onTrue
      * @param onError
      * @param <T>
      */
-    public <T> void getPictorialDetails(String id, Class<T> t, OnTrue<T> onTrue, OnError onError) {
+    public <T> void getPictorialDetails(Class<T> t, OnTrue<T> onTrue, OnError onError) {
         getRequestAsync(Urls.PICTORIAL_DETAILS, t, onTrue, onError);
     }
+
 
 }
 
