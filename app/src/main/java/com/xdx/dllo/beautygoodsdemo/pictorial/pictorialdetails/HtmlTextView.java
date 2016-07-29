@@ -1,15 +1,11 @@
 package com.xdx.dllo.beautygoodsdemo.pictorial.pictorialdetails;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
+
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.AttributeSet;
 import android.widget.TextView;
-
-import org.xml.sax.XMLReader;
-
 import java.io.InputStream;
 
 /**
@@ -53,7 +49,7 @@ public class HtmlTextView extends TextView {
         if (useLocalDrawables) {
             imgGetter = new LocalImageGetter(getContext());
         } else {
-            imgGetter = new UrlImageGetter();
+            imgGetter = new UrlImageGetter(this,getContext());
         }
 
         // this uses Android's Html class for basic parsing, and HtmlTagHandler
@@ -61,25 +57,7 @@ public class HtmlTextView extends TextView {
 
         // make links work
         setMovementMethod(LinkMovementMethod.getInstance());
-//        text.setTextColor(getResources().getColor(android.R.color.secondary_text_dark_nodisable));
+        this.setTextColor(getResources().getColor(android.R.color.background_dark));
 
-    }
-
-
-    private class LocalImageGetter implements Html.ImageGetter {
-        public LocalImageGetter(Context context) {
-        }
-
-        @Override
-        public Drawable getDrawable(String s) {
-            return null;
-        }
-    }
-
-    private class HtmlTagHandler implements Html.TagHandler {
-        @Override
-        public void handleTag(boolean b, String s, Editable editable, XMLReader xmlReader) {
-
-        }
     }
 }

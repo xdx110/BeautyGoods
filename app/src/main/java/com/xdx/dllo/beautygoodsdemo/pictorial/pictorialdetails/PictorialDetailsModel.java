@@ -12,7 +12,7 @@ public class PictorialDetailsModel implements BaseContract.Model {
     @Override
     public void onOk(String id) {
 
-        NetworkRequests.getInstance().getPictorialDetails(id, PictorialDetailsBean.class, new NetworkRequests.OnTrue<PictorialDetailsBean>() {
+        NetworkRequests.getInstance().getPictorialDetails( PictorialDetailsBean.class, new NetworkRequests.OnTrue<PictorialDetailsBean>() {
             @Override
             public void hasData(PictorialDetailsBean data) {
                 presenter.setData(data);

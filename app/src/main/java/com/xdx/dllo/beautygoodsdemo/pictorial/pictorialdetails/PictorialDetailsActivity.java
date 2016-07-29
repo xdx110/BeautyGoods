@@ -13,7 +13,6 @@ import com.xdx.dllo.beautygoodsdemo.base.BaseContract;
 public class PictorialDetailsActivity extends BaseActivity implements BaseContract.View<PictorialDetailsBean> {
     private BaseContract.Presenter presenter;
 
-    private TextView tvPictorialDetails;
 
     @Override
     public int initLayout() {
@@ -22,7 +21,7 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
 
     @Override
     public void initView() {
-        tvPictorialDetails = (TextView) findViewById(R.id.tvPictorialDetails);
+
 
 
     }
@@ -40,10 +39,12 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
 
     @Override
     public void getData(PictorialDetailsBean data) {
-        tvPictorialDetails.setText(data.getData().getArticles().get(0).getTitle());
 
         String content = data.getData().getArticles().get(0).getContent();
-        Log.d("content",":"+data.getData().getArticles().get(0).getContent());
+
+        HtmlTextView htmlTextView = (HtmlTextView) findViewById(R.id.htmlTextView);
+        htmlTextView.setHtmlFromString(content,false);
+
 
 
 
