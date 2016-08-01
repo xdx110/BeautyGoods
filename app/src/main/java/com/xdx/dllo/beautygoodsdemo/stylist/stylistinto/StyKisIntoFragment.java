@@ -112,6 +112,9 @@ public class StyKisIntoFragment extends BaseFragment implements BaseContract.Vie
         stylistInfoWorksFragment = new StylistInfoWorksFragment();
         Bundle bundleWorks = new Bundle();
         bundleWorks.putString("IDworks", id);
+
+
+
         //
         stylistInfoWorksFragment.setArguments(bundleWorks);
         BaseContract.Model model = new StylistInfoWorksModel();
@@ -141,6 +144,10 @@ public class StyKisIntoFragment extends BaseFragment implements BaseContract.Vie
 
         styKisInfoCheckBelow.setOnClickListener(this);
         stylistInfoIbnBack.setOnClickListener(this);
+
+        Bundle bundle2 = new Bundle();
+        bundle2.putString("PriceId", id);
+        stylistinfopictorialFragment.setArguments(bundle2);
 
 
     }
@@ -213,14 +220,21 @@ public class StyKisIntoFragment extends BaseFragment implements BaseContract.Vie
                 getChildFragmentManager().beginTransaction().replace(R.id.replaceFrameLayout, stylistInfoWorksFragment).commit();
                 break;
             case R.id.styKisInfoPictorialRbn:
+
+                if (skyKisInfoRadioLayout.getParent() != suspensionLayout) {
+                    replaceLayout.removeView(skyKisInfoRadioLayout);
+                    suspensionLayout.addView(skyKisInfoRadioLayout);
+                }
+
                 getChildFragmentManager().beginTransaction().replace(R.id.replaceFrameLayout, stylistinfopictorialFragment).commit();
+
                 break;
             case R.id.styKisInfoCheckBelow:
                 if (styKisInfoCheckBelow.isChecked() != true) {
                     styKisInfoTvDescription.setMaxLines(2);
 
                 } else {
-                    styKisInfoTvDescription.setMaxLines(20);
+                    styKisInfoTvDescription.setMaxLines(100);
                 }
                 break;
             case R.id.stylistInfoIbnBack:

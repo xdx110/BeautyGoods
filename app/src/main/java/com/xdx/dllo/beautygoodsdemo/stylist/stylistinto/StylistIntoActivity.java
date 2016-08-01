@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 
 import com.xdx.dllo.beautygoodsdemo.R;
 import com.xdx.dllo.beautygoodsdemo.base.BaseActivity;
+import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.stylistinfopictorial.StylistinfopictorialFragment;
 import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.stylistinfoworks.StylistInfoWorksFragment;
 
 /**
@@ -32,10 +33,11 @@ public class StylistIntoActivity extends BaseActivity {
     public void initDate() {
 
         StyKisIntoFragment styKisIntoFragment = new StyKisIntoFragment(this);
-
         Bundle bundle = new Bundle();
         bundle.putInt("id", getIntent().getIntExtra("id", 0));
         styKisIntoFragment.setArguments(bundle);
+
+
 
         StyListIntoModel model = new StyListIntoModel();
         StyKistIntoPresenter presenter = new StyKistIntoPresenter(model, styKisIntoFragment);

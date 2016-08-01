@@ -31,6 +31,7 @@ public class GoodsFragment extends BaseFragment implements BaseContract.View<Goo
         goodListView = (MyListView) view.findViewById(R.id.goods_list_view);
         adapter = new GoodsAdapter(context);
         presenter.onOk(Timer.getTime(0));
+        Log.d("Timer",Timer.getTime(0)+":");
         presenter.start();
         presenter.onOk(Timer.getTime(0));
 
@@ -90,7 +91,10 @@ public class GoodsFragment extends BaseFragment implements BaseContract.View<Goo
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(context, WorksDetailsActivity.class);
-                intent.putExtra("WOEKSID", data.getData().getActivities().get(i).getProduct().getId());
+
+                Log.d("WordId","::"+data.getData().getActivities().get(i-1).getProduct().getId());
+                intent.putExtra("WOEKSID", data.getData().getActivities().get(i-1).getProduct().getId());
+
                 startActivity(intent);
             }
         });

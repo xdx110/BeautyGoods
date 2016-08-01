@@ -19,7 +19,7 @@ public class StyKistIntoPresenter implements BaseContract.Presenter<StylistIntoT
 
     @Override
     public void onOk(String id) {
-        Log.d("id------",id);
+//        Log.d("id------",id);
         model.onOk(id);
     }
 

@@ -34,13 +34,4 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public abstract void initDate();
 
-    /**
-     * 销毁Activity
-     */
-    @Override
-    public  void finish() {
-        super.finish();
-
-    }
-
 }

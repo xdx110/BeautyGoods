@@ -25,7 +25,7 @@ public class MyCheckBox extends CheckBox {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        Drawable[] drawable = getCompoundDrawables();
+        Drawable[] drawable =  getCompoundDrawables();
         if(drawable != null){
             Drawable drawableLeft = drawable[0];
             if(drawableLeft != null){

@@ -232,7 +232,6 @@ public class NetworkRequests {
     /**
      * 画报
      *
-     *
      * @param t
      * @param onTrue
      * @param onError
@@ -240,6 +239,19 @@ public class NetworkRequests {
      */
     public <T> void getPictorialDetails(Class<T> t, OnTrue<T> onTrue, OnError onError) {
         getRequestAsync(Urls.PICTORIAL_DETAILS, t, onTrue, onError);
+    }
+
+    /**
+     * 设计师 画报界面
+     *
+     * @param id
+     * @param t
+     * @param onTrue
+     * @param onError
+     * @param <T>
+     */
+    public <T> void getStyListInfoPictorial(String id, Class<T> t, OnTrue<T> onTrue, OnError onError) {
+        getRequestAsync(Urls.STYLISTINFOPICTORIAL_HEARD + id + Urls.STYLISTINFOPICTORIAL_END, t, onTrue, onError);
     }
 
 

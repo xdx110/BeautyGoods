@@ -40,8 +40,6 @@ public class UrlImageGetter implements Html.ImageGetter {
                 if (resource != null) {
                     urlDrawable.bitmap = resource;
                     float scaleWidth = ((float) width) / resource.getWidth();
-
-                    // ???????matrix??
                     Matrix matrix = new Matrix();
                     matrix.postScale(scaleWidth, scaleWidth);
                     resource = Bitmap.createBitmap(resource, 0, 0,

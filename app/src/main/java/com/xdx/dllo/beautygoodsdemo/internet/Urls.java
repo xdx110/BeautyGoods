@@ -28,4 +28,9 @@ public class Urls {
     //画报详情测试URL
     public static final String PICTORIAL_DETAILS = "http://design.zuimeia.com/api/v1/articles/daily/?page=1&page_size=30&user_id=0&device_id=863360020709857&platform=android&lang=zh&appVersion=1.0.4&appVersionCode=10004&systemVersion=23&countryCode=CN&user_id=0&token=&package_name=com.zuiapps.zuiworld";
 
+    //设计师里的画报
+    public static final String STYLISTINFOPICTORIAL_HEARD = "http://design.zuimeia.com/api/v1/articles/designer/";
+    public static final String STYLISTINFOPICTORIAL_END = "/?page=1&page_size=30&user_id=8066&device_id=863360020709857&platform=android&lang=zh&appVersion=1.0.5&appVersionCode=10005&systemVersion=23&countryCode=CN&user_id=8066&token=4ds-fedadc514db5f681beda&package_name=com.zuiapps.zuiworld";
+
+
 }
