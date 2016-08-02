@@ -37,7 +37,7 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
     private TextView pictorialDetailsTvLabel;
     private ImageView pictorialDetailsIvAvatar;
     private ImageView pictorialDetailsIvShare;
-
+    private  int id;
 
     @Override
     public int initLayout() {
@@ -75,7 +75,7 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
     @Override
     public void getData(PictorialDetailsBean data) {
         Intent intent = getIntent();
-        int id = intent.getIntExtra("pos", 12);
+        id = intent.getIntExtra("pos", 12);
         String content = data.getData().getArticles().get(id).getContent();
         htmlTextView.setHtmlFromString(content, false);
         pictorialDetailsTvTitle.setText(data.getData().getArticles().get(id).getTitle());
@@ -117,6 +117,7 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
         }
 
     }
+
     private void showShare() {
         ShareSDK.initSDK(this);
         OnekeyShare oks = new OnekeyShare();
@@ -130,23 +131,23 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
         // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
         oks.setTitleUrl("http://sharesdk.cn");
         // text是分享文本，所有平台都需要这个字段
-        oks.setText("我是分享文本");
+        oks.setText("我是分享网址");
         // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
         //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
         // url仅在微信（包括好友和朋友圈）中使用
-        oks.setUrl("http://sharesdk.cn");
+        oks.setUrl("http://design.zuimeia.com/api/v1/articles/designer/" + id +
+                "/?page=1&page_size=30&user_id=8066&device_id=863360020709857&platform=android&lang=zh&appVersion=1.0.5&appVersionCode=10005&systemVersion=23&countryCode=CN&user_id=8066&token=4ds-fedadc514db5f681beda&package_name=com.zuiapps.zuiworld");
         // comment是我对这条分享的评论，仅在人人网和QQ空间使用
         oks.setComment("我是测试评论文本");
         // site是分享此内容的网站名称，仅在QQ空间使用
         oks.setSite(getString(R.string.app_name));
         // siteUrl是分享此内容的网站地址，仅在QQ空间使用
-        oks.setSiteUrl("http://sharesdk.cn");
+        oks.setSiteUrl("http://design.zuimeia.com/api/v1/articles/designer/" + id +
+                "/?page=1&page_size=30&user_id=8066&device_id=863360020709857&platform=android&lang=zh&appVersion=1.0.5&appVersionCode=10005&systemVersion=23&countryCode=CN&user_id=8066&token=4ds-fedadc514db5f681beda&package_name=com.zuiapps.zuiworld");
 
 // 启动分享GUI
         oks.show(this);
     }
-
-
 
 
     static class DataCleanManager {
