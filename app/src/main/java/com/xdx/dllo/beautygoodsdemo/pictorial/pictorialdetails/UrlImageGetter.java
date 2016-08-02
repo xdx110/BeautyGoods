@@ -39,7 +39,7 @@ public class UrlImageGetter implements Html.ImageGetter {
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                 if (resource != null) {
                     urlDrawable.bitmap = resource;
-                    float scaleWidth = ((float) width) / resource.getWidth();
+                    float scaleWidth = (float) (0.5* ((float) width) / resource.getWidth());
                     Matrix matrix = new Matrix();
                     matrix.postScale(scaleWidth, scaleWidth);
                     resource = Bitmap.createBitmap(resource, 0, 0,

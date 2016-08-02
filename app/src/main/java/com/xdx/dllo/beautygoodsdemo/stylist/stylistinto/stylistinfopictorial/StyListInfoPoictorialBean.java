@@ -1,11 +1,15 @@
 package com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.stylistinfopictorial;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by dllo on 16/7/30.
  */
-public class StyListInfoPoictorialBean {
+public class StyListInfoPoictorialBean implements Serializable {
 
 
     /**
@@ -20,6 +24,9 @@ public class StyListInfoPoictorialBean {
      */
 
     private int result;
+
+
+
 
     public DataBean getData() {
         return data;
@@ -37,7 +44,9 @@ public class StyListInfoPoictorialBean {
         this.result = result;
     }
 
-    public static class DataBean {
+
+
+    public static class DataBean implements Serializable{
         private int has_next;
         /**
          * title : 据说这个姑娘做的包，你可以背一辈子
@@ -74,7 +83,7 @@ public class StyListInfoPoictorialBean {
             this.articles = articles;
         }
 
-        public static class ArticlesBean {
+        public static class ArticlesBean implements Serializable  {
             private String title;
             private int is_favored;
             private int comment_num;
@@ -211,7 +220,7 @@ public class StyListInfoPoictorialBean {
                 this.refer_articles = refer_articles;
             }
 
-            public static class DesignersBean {
+            public static class DesignersBean implements Serializable {
                 private String city;
                 private String concept;
                 private String name;

@@ -85,6 +85,8 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                 pictorialDetailsIvAvatar.setImageDrawable(new RoundDrawable(resource));
+
+
             }
         });
 

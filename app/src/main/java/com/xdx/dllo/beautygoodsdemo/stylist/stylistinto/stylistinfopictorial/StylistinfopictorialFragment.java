@@ -2,6 +2,7 @@ package com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.stylistinfopictorial;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -17,12 +18,13 @@ import com.xdx.dllo.beautygoodsdemo.base.BaseFragment;
 import com.xdx.dllo.beautygoodsdemo.pictorial.pictorialdetails.PictorialDetailsActivity;
 import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.StyKistIntoPresenter;
 import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.StyListIntoModel;
+import com.xdx.dllo.beautygoodsdemo.stylist.stylistinto.stylistinfopictorial.stypictoridaletails.StyPictorialDetailsActivity;
 
 
 /**
  * Created by dllo on 16/7/23.
  */
-public class StylistinfopictorialFragment extends BaseFragment implements  BaseContract.View<StyListInfoPoictorialBean> {
+public class StylistinfopictorialFragment extends BaseFragment implements BaseContract.View<StyListInfoPoictorialBean> {
     private TextView stylistInfoPictorialTvTitle;
     private TextView stylistInfoPictorialSubTvSubTitle;
     private ImageView stylistInfoPictorialIvImage;
@@ -44,35 +46,28 @@ public class StylistinfopictorialFragment extends BaseFragment implements  BaseC
     @Override
     public void initDate() {
         StyListInfoPoictorialModel model = new StyListInfoPoictorialModel();
-        StyListInfoPoictorialPresenter presenter = new StyListInfoPoictorialPresenter(this,model);
+        StyListInfoPoictorialPresenter presenter = new StyListInfoPoictorialPresenter(this, model);
         this.setPresenter(presenter);
         Bundle bundle = getArguments();
         String id = bundle.getString("PriceId");
-
         presenter.onOk(id);
         presenter.start();
-
-
-
-
-
-
     }
-
 
 
     @Override
     public void getData(final StyListInfoPoictorialBean data) {
         stylistInfoPictorialTvTitle.setText(data.getData().getArticles().get(0).getTitle());
         stylistInfoPictorialSubTvSubTitle.setText(data.getData().getArticles().get(0).getSub_title());
-        Glide.with(this).load(data.getData().getArticles().get(0).getImage_url()).override(1000,3000).into(stylistInfoPictorialIvImage);
+        Glide.with(this).load(data.getData().getArticles().get(0).getImage_url()).override(1000, 3000).into(stylistInfoPictorialIvImage);
 
         stylistInfoPictorialLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(context, PictorialDetailsActivity.class);
-//                intent.putExtra("pos",34);
-//                startActivity(intent);
+                Intent intent = new Intent(context, StyPictorialDetailsActivity.class);
+                intent.putExtra("data",data);
+
+                startActivity(intent);
 
             }
         });

@@ -55,6 +55,7 @@
         <activity android:name=".into.SetupActivity" />
         <activity android:name=".stylist.stylistinto.stylistinfoworks.worksdetails.WorksDetailsActivity" />
         <activity android:name=".into.PhoneNumActivity" />
+        <activity android:name=".stylist.stylistinto.stylistinfopictorial.stypictoridaletails.StyPictorialDetailsActivity" />
     </application>
 
 </manifest>
