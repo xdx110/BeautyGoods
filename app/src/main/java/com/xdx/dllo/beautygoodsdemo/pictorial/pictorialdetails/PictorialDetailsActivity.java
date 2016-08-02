@@ -3,16 +3,12 @@ package com.xdx.dllo.beautygoodsdemo.pictorial.pictorialdetails;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.xdx.dllo.beautygoodsdemo.R;
@@ -22,6 +18,10 @@ import com.xdx.dllo.beautygoodsdemo.tools.RoundDrawable;
 
 import java.io.File;
 
+import cn.sharesdk.framework.ShareSDK;
+
+
+import cn.sharesdk.onekeyshare.OnekeyShare;
 
 /**
  * Created by dllo on 16/7/28.
@@ -36,6 +36,7 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
     private TextView pictorialDetailsTvName;
     private TextView pictorialDetailsTvLabel;
     private ImageView pictorialDetailsIvAvatar;
+    private ImageView pictorialDetailsIvShare;
 
 
     @Override
@@ -52,7 +53,8 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
         pictorialDetailsIvBack = (ImageView) findViewById(R.id.pictorialDetailsIvBack);
         pictorialDetailsTvName = (TextView) findViewById(R.id.pictorialDetailsTvName);
         pictorialDetailsTvLabel = (TextView) findViewById(R.id.pictorialDetailsTvLabel);
-        pictorialDetailsIvAvatar= (ImageView) findViewById(R.id.pictorialDetailsIvAvatar);
+        pictorialDetailsIvAvatar = (ImageView) findViewById(R.id.pictorialDetailsIvAvatar);
+        pictorialDetailsIvShare = (ImageView) findViewById(R.id.pictorialDetailsIvShare);
 
 
     }
@@ -65,6 +67,7 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
         presenter.onOk("");
         presenter.start();
         pictorialDetailsIvBack.setOnClickListener(this);
+        pictorialDetailsIvShare.setOnClickListener(this);
 
 
     }
@@ -80,16 +83,13 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
         Glide.with(this).load(data.getData().getArticles().get(id).getImage_url()).override(1000, 3000).into(pictorialDetailsIvImage);
         pictorialDetailsTvName.setText(data.getData().getArticles().get(id).getDesigners().get(0).getName());
         pictorialDetailsTvLabel.setText(data.getData().getArticles().get(id).getDesigners().get(0).getLabel());
-        Glide.with(this).load(data.getData().getArticles().get(id).getDesigners().get(0).getAvatar_url()).asBitmap().into(new SimpleTarget<Bitmap>(){
-
+        Glide.with(this).load(data.getData().getArticles().get(id).getDesigners().get(0).getAvatar_url()).asBitmap().into(new SimpleTarget<Bitmap>() {
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                 pictorialDetailsIvAvatar.setImageDrawable(new RoundDrawable(resource));
 
-
             }
         });
-
     }
 
     @Override
@@ -111,16 +111,55 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
                 finish();
 
                 break;
+            case R.id.pictorialDetailsIvShare:
+                showShare();
+                break;
         }
+
+    }
+    private void showShare() {
+        ShareSDK.initSDK(this);
+        OnekeyShare oks = new OnekeyShare();
+        //关闭sso授权
+        oks.disableSSOWhenAuthorize();
+
+// 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
+        //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
+        // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
+//        oks.setTitle(getString(R.string.share));
+        // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
+        oks.setTitleUrl("http://sharesdk.cn");
+        // text是分享文本，所有平台都需要这个字段
+        oks.setText("我是分享文本");
+        // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+        //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+        // url仅在微信（包括好友和朋友圈）中使用
+        oks.setUrl("http://sharesdk.cn");
+        // comment是我对这条分享的评论，仅在人人网和QQ空间使用
+        oks.setComment("我是测试评论文本");
+        // site是分享此内容的网站名称，仅在QQ空间使用
+        oks.setSite(getString(R.string.app_name));
+        // siteUrl是分享此内容的网站地址，仅在QQ空间使用
+        oks.setSiteUrl("http://sharesdk.cn");
+
+// 启动分享GUI
+        oks.show(this);
     }
 
-    static class  DataCleanManager{
-        /** * 清除本应用内部缓存(/data/data/com.xxx.xxx/cache) * * @param context */
+
+
+
+    static class DataCleanManager {
+        /**
+         * 清除本应用内部缓存(/data/data/com.xxx.xxx/cache) * * @param context
+         */
         public static void cleanInternalCache(Context context) {
             deleteFilesByDirectory(context.getCacheDir());
         }
 
-        /** * 清除本应用所有数据库(/data/data/com.xxx.xxx/databases) * * @param context */
+        /**
+         * 清除本应用所有数据库(/data/data/com.xxx.xxx/databases) * * @param context
+         */
         public static void cleanDatabases(Context context) {
             deleteFilesByDirectory(new File("/data/data/"
                     + context.getPackageName() + "/databases"));
@@ -133,14 +172,19 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
         public static void cleanSharedPreference(Context context) {
             deleteFilesByDirectory(new File("/data/data/"
                     + context.getPackageName() + "/shared_prefs"));
+
         }
 
-        /** * 按名字清除本应用数据库 * * @param context * @param dbName */
+        /**
+         * 按名字清除本应用数据库 * * @param context * @param dbName
+         */
         public static void cleanDatabaseByName(Context context, String dbName) {
             context.deleteDatabase(dbName);
         }
 
-        /** * 清除/data/data/com.xxx.xxx/files下的内容 * * @param context */
+        /**
+         * 清除/data/data/com.xxx.xxx/files下的内容 * * @param context
+         */
         public static void cleanFiles(Context context) {
             deleteFilesByDirectory(context.getFilesDir());
         }
@@ -156,12 +200,16 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
             }
         }
 
-        /** * 清除自定义路径下的文件，使用需小心，请不要误删。而且只支持目录下的文件删除 * * @param filePath */
+        /**
+         * 清除自定义路径下的文件，使用需小心，请不要误删。而且只支持目录下的文件删除 * * @param filePath
+         */
         public static void cleanCustomCache(String filePath) {
             deleteFilesByDirectory(new File(filePath));
         }
 
-        /** * 清除本应用所有的数据 * * @param context * @param filepath */
+        /**
+         * 清除本应用所有的数据 * * @param context * @param filepath
+         */
         public static void cleanApplicationData(Context context, String... filepath) {
             cleanInternalCache(context);
             cleanExternalCache(context);
@@ -173,7 +221,9 @@ public class PictorialDetailsActivity extends BaseActivity implements BaseContra
             }
         }
 
-        /** * 删除方法 这里只会删除某个文件夹下的文件，如果传入的directory是个文件，将不做处理 * * @param directory */
+        /**
+         * 删除方法 这里只会删除某个文件夹下的文件，如果传入的directory是个文件，将不做处理 * * @param directory
+         */
         private static void deleteFilesByDirectory(File directory) {
             if (directory != null && directory.exists() && directory.isDirectory()) {
                 for (File item : directory.listFiles()) {
